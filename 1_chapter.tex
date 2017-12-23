@@ -1,0 +1,74 @@
+% !TeX encoding = UTF-8
+% !TeX program = lualatex
+% !TeX spellcheck = en_US
+% !TeX root = thesis.tex
+
+\pagenumbering{arabic}
+\chapter{Burgeoning environmental awareness}
+\label{chap:Introduction}
+\enlargethispage*{1cm}
+
+
+\blindtext[2]
+
+
+
+
+\begin{SCfigure}[][bth]
+	\begin{tikzpicture}[thick,scale=0.7, every node/.style={scale=0.7}]
+	\fontfamily{phv}\selectfont
+	\scriptsize
+	\begin{scope}[blend mode=multiply]
+	\fill[tum_blue!30!white]   ( 90:1.2) circle (2.2);
+	\fill[tum_green!30!white]  (210:1.2) circle (2.2);
+	\fill[tum_beige!30!white]  (330:1.2) circle (2.2);
+	\end{scope}
+	%\node at ( 95:2.3)    {Social};
+	%\node at ( 205:2.5)   {Environmental};
+	%\node at ( 332:2.3)   {Economic};
+	%\node [font=\footnotesize] at ( 225:0.35) {\textbf{Sustainable}};
+	%\node at ( 155:1.75)   {Bearable};
+	%\node at ( 260:1.7)   {Viable};
+	%\node at ( 40:1.3)   {Equitable};
+	\node at ( 90:2.3)    {Social};
+	\node at ( 205:2.4)   {Environmental};
+	\node at ( 335:2.3)   {Economic};
+	\node [font=\small] at ( 270:0.3) {\textbf{Sustainable}};
+	\node at ( 145:1.7)   {Bearable};
+	\node at ( 270:1.7)   {Viable};
+	\node at ( 35:1.7)   {Equitable};
+	\end{tikzpicture}
+	\captionsetup{format=plain,labelsep=newline}
+	\caption[The three pillars of sustainability]{The three pillars of sustainability: society, economy, environment and their overlaps.}
+	\label{fig:three-pillars}
+\end{SCfigure}
+
+\paragraph*{Problem statement}
+
+\blindtext[1]
+
+\blindtext[1]
+
+
+%
+
+
+\paragraph*{Outline}
+\enlargethispage*{1cm}
+
+This thesis is structured in the following manner:
+
+\begin{itemize}
+	\item  \textit{\Fref{chap:building_aerodynamics}} begins with an introduction to building aerodynamics and its theoretical background, covering the transition from previous methods for predicting natural ventilation potential.
+	
+	\item \textit{\Fref{chap:CFD}} will explain the basics of \gls{CFD} for the application of air flow modeling and provides an introduction into OpenFOAM, the tool used in this study.
+	
+	\item \textit{\Fref{chap:OF_custom_features}} explains the natural ventilation metrics which have been implemented in \OF\ and discusses their applicability for natural ventilation prediction.
+	
+	\item \textit{\Fref{chap:validation_&_verification_study}} is a validation  study for a simple scale model measured in the wind tunnel, which estimates errors and investigates the sensitivity of boundary conditions for a case setup.
+	
+	\item \textit{\Fref{chap:case_study_BRAC_U}} applies the findings from \fref{chap:validation_&_verification_study} to a case study---\BRAC. The goal is to provide design advice that would maximize the potential of natural ventilation over all classrooms on one floor of focus.
+	
+	\item \textit{\Fref{chap:outlook}} will provide a look into potential further developments, taking into account current limitations that have been identified.
+\end{itemize}
+

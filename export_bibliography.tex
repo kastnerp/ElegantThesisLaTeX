@@ -1,0 +1,26 @@
+% !TeX encoding = UTF-8
+% !TeX program = lualatex
+% !TeX spellcheck = en_US
+
+\input{header}
+\input{glossaries}
+
+\begin{document}
+\thispagestyle{empty}
+
+\citet{ASHRAE2005}
+\citet{Ai2014a}
+\citet{Allocca2003}
+\citet{Awbi2008}
+
+
+\clearpage
+%\begin{multicols}{2}
+{\pagestyle{thesisAPPENDIX}
+\small
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{literature/literature}
+\clearpage}
+
+
+\end{document}

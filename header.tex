@@ -1,0 +1,977 @@
+% !TeX encoding = UTF-8
+% !TeX program = lualatex
+% !TeX spellcheck = en_US
+
+
+\documentclass[
+%draft,
+12pt,
+%oneside,
+twoside,
+paper=a4,									% Seitengröße%
+DIV=9,										% Satzspiegel: z.B. calc oder 6-15 //war ursprünglich 13
+BCOR=4mm, 									% Bindekorrektur
+%listof=chapterentry,						% Im Abbildungsverzeichnis und Tabellenverzeichnis auch Kapitel anzeigen
+toc=bibliography,							% Literaturverzeichnis mit ins Inhaltsverzeichnis eintragen
+toc=listof,
+footnotes=multiple,							% mehrere Fußnoten separieren
+%parindent,									% Absatzstil hier: Einrückung;
+%parskip=half,								% Absatzstil hier: keine Einrückung;
+numbers=noenddot,							% Keine Punkte nach Nummerierung
+parskip=half-,
+]{scrbook}
+
+
+
+\RedeclareSectionCommands[ %Linebreak after paragraphs
+afterskip=1sp
+]{paragraph,subparagraph}
+
+\usepackage{etex}
+\reserveinserts{20}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%FONTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{textcomp}
+\usepackage[]{euler}
+\usepackage{fontspec}
+\usepackage{luatextra}
+
+
+%FONT Combination 1
+
+
+\setmainfont{Erewhon}[
+Extension=.otf,
+UprightFont=*-Regular,
+ItalicFont=*-Italic,
+BoldFont=*-Bold,
+BoldItalicFont=*-BoldItalic,
+SlantedFont=*-RegularSlanted,
+BoldSlantedFont=*-BoldSlanted,
+]
+\setsansfont{texgyreheros}[
+Scale=MatchLowercase,% or MatchUppercase
+Extension=.otf,
+UprightFont=*-regular,
+ItalicFont=*-italic,
+BoldFont=*-bold,
+BoldItalicFont=*-bolditalic,
+]
+
+%FONT Combination 2
+\setmainfont{XCharter-Roman}
+\setsansfont{texgyreheros}[
+Scale=MatchLowercase,% or MatchUppercase
+Extension=.otf,
+UprightFont=*-regular,
+ItalicFont=*-italic,
+BoldFont=*-bold,
+BoldItalicFont=*-bolditalic,
+]
+
+%FONT Combination 3 (Adobe Fonts)
+
+%\setmainfont{MinionPro-Regular.otf}[
+%ExternalLocation=./fonts/,
+%Ligatures=TeX, 
+%Numbers=OldStyle,
+%SlantedFont = MinionPro-Regular.otf,
+%BoldFont = MinionPro-Bold.otf ]
+%\setsansfont{MyriadPro-Regular.otf}[
+%ExternalLocation=./fonts/,
+%SlantedFont = MyriadPro-It.otf,
+%BoldFont = MyriadPro-Bold.otf ]
+%\setmonofont{CourierStd.otf}[
+%ExternalLocation=./fonts/,]
+
+
+%%%\setmathfont{XITS Math}
+%%%\setmathfont[range=\mathup/{num,latin,Latin,greek,Greek}]{Minion Pro}
+%%%\setmathfont[range=\mathbfup/{num,latin,Latin,greek,Greek}]{MinionPro-Bold}
+%%%\setmathfont[range=\mathit/{num,latin,Latin,greek,Greek}]{MinionPro-It}
+%%%\setmathfont[range=\mathbfit/{num,latin,Latin,greek,Greek}]{MinionPro-BoldIt}
+%%%\setmathfont[range=\mathscr,StylisticSet={1}]{XITS Math}
+%%%\setmathfont[range={"005B,"005D,"0028,"0029,"007B,"007D,"2211,"002F,"2215 } ]{Latin Modern Math} % brackets, sum, /
+%%%\setmathfont[range={"002B,"002D,"003A-"003E} ]{MnSymbol} % + - < = >
+%%%\setmathrm{Minion Pro}
+%%%
+%%%\usepackage{luaotfload,lualatex-math}
+
+
+
+%\usepackage[T1, LGR]{fontenc} % LGR caused greek letters in footline
+
+\usepackage[english]{babel}				% Schriftsatzerweiterung
+\usepackage{alphabeta} % Use greek letters as text and in PDF bookmarks
+
+\usepackage{bm}								% Enable bold math symbols
+\usepackage{microtype}%
+
+
+%\usepackage{geometry}
+\usepackage{graphicx} 					% Grafiken einbinden
+\usepackage{wrapfig}					% Von Text umflossene Grafiken
+\usepackage{subfig}
+%\usepackage{subcaption}
+\captionsetup[subfloat]{font=sf,size=footnotesize}
+
+
+
+
+\makeatletter							% Der folgende neue Befehl bindet Bilder in der Originalgrösse ein, falls sie weniger breit als die Seite sind. Sonst wird das Bild auf Seitenbreite skaliert.
+\def\ScaleIfNeeded{%
+	\ifdim\Gin@nat@width>\linewidth
+	\linewidth
+	\else
+	\Gin@nat@width
+	\fi
+}
+\makeatother
+% % % % % % % % % % % % % % % % % % % %
+%\usepackage{bigfoot}
+
+\usepackage[dvipsnames]{xcolor}
+\definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
+\definecolor{royalblue}{rgb}{0.0, 0.14, 0.4}
+\definecolor{tumblue}{RGB}{15 , 27 , 95}
+\definecolor{tumblue}{RGB}{15 , 27 , 95}
+\definecolor{lightblue}{RGB}{220 , 230 , 241}
+
+
+% % % % % % % % % % % % % % % % % % % %
+\usepackage{marvosym}						% Euro-Symbol verfügbar machen
+
+\usepackage[official,right]{eurosym}
+%\KOMAoptions{DIV=last}					% Anpassung des Satzspiegels an Schriften, (nur bei DIV=calc wirksam)
+%\usepackage{blindtext}					% Blindtext erzeugen
+\PassOptionsToPackage{hyphens}{url}
+%\usepackage[hyphenbreaks]{breakurl}
+\usepackage[hyphens]{url}
+%\urlstyle{same}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+
+%%%%%%% Titelseite  %%%%%%%%%%%%%%%%%%%
+
+\newcommand{\titel}{Customizing OpenFOAM to assess\\ wind-induced natural ventilation\\ potential of classrooms\newline {\Large A case study for BRAC University}}
+\newcommand{\untertitel}{und hier kommt der Untertitel}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
+\newcommand{\art}{Master's Thesis}
+\newcommand{\fachgebiet}{}
+\newcommand{\autor}{Patrick Kastner}
+\newcommand{\wohnort}{81369 München}
+\newcommand{\univname}{Technische Universität München}
+\newcommand{\studienbereich}{Energy-efficient and Sustainable Building}
+\newcommand{\groupname}{}
+\newcommand{\deptname}{}
+\newcommand{\degreename}{Master of Science (MSc)}
+\newcommand{\matrikelnr}{03650879}
+\newcommand{\erstgutachter}{Prof. Dipl.-Ing. Thomas Auer}
+\newcommand{\zweitgutachter}{Dr. rer. nat. Wolfgang Kessling}
+\newcommand{\drittgutachter}{Markus Krauß, M.Eng.}
+\newcommand{\viertgutachter}{Dipl.-Ing. Christian Oberdorf}
+\newcommand{\ort}{München}
+
+
+
+%\usepackage[hang, flushmargin]{footmisc}
+\usepackage[breaklinks, hidelinks,hyperfootnotes=false, unicode]{hyperref} % automatische Hyperlinks in Verzeichnissen
+\def\UrlBigBreaks{\do\/\do-\do:}
+\hypersetup{
+	draft=false,
+	%    bookmarks=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,  %hier darf nur ne Zahl stehen, ansonsten produziert TeX nen Fehler in Zusammenhang mit 		bookmarksopen
+	bookmarksdepth=4, %deprecated
+	bookmarksnumbered=true,
+	linktocpage=true,       %break links correctly in listoftables/figures
+	unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+	pdftoolbar=true,        % show Acrobat’s toolbar?
+	pdfmenubar=true,        % show Acrobat’s menu?
+	pdffitwindow=true,     % window fit to page when opened
+	pdfstartview={XYZ null null 1.00},   
+	%         XYZ 	left top zoom   Sets a coordinate and a zoom factor. If any one is null, the source link value is used. null null null will give the same values as the current page.   Fit   Fits the page to the window.    FitH 	top   
+	%    Fits the width of the page to the window.    FitV 	left     Fits the height of the page to the window.    FitR 	left bottom right top    Fits the rectangle specified by the four coordinates to the window.    FitB  Fits the page bounding box to the window.
+	%    FitBH 	top  Fits the width of the page bounding box to the window.
+	%    FitBV 	left  Fits the height of the page bounding box to the window. 
+	pdftitle = {Customizing OpenFOAM to assess wind-induced natural ventilation potential of classrooms: A case study for BRAC University},    % title
+	pdfauthor = {\autor},     % author
+	pdfsubject = {Master's Thesis},   % subject of the document
+	pdfcreator={\autor},   % creator of the document
+	pdfproducer={\autor}, % producer of the document
+	pdfkeywords= {natural ventilation} {OpenFOAM} {building simulation} {CFD}, % list of keywords
+	pdfnewwindow=true,      % links in new window
+	pdfpagelayout={TwoColumnRight},
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=black,          % color of internal links
+	citecolor=tumblue,        % color of links to bibliography
+	filecolor=black,      % color of file links
+	urlcolor=tumblue,           % color of external links
+	anchorcolor =black,
+	menucolor =red,
+	runcolor =cyan,
+	pdfencoding=auto,
+}
+
+\usepackage[]{hypcap}  %link to image directly, not to caption
+
+
+\usepackage{bookmark}
+
+
+\usepackage{xspace}						% Macht immer ein Leerzeichen, außer Nutzer will mehrere Leerzeichen
+
+%\usepackage{layout}						% Layout überprüfen
+\usepackage{setspace} 	% Zeilenabstand singelspacing, onehalfspacing, doublespacing,
+\usepackage[english, plain]{fancyref}
+\usepackage{booktabs} % Tabellenlinien
+\usepackage{upgreek}
+
+\usepackage{longtable}					% Mehrseitige Tabellen
+\usepackage{tablefootnote}
+\usepackage{lscape}						% Landscpae Seiten
+\usepackage{pdflscape}					% Landscape Seiten drehen
+\usepackage{gensymb}					% Celsius anzeigen
+\usepackage{subfig}					% mehrere Bilder pro Zeile
+\usepackage{pdfpages}
+\usepackage[footnote]{acronym}			% Abkürzungsverzeichnis
+\usepackage{mathtools} % braces in math environment
+
+
+\usepackage{epigraph}
+
+\usepackage{color, colortbl}	%You will need the following two packages, the first to define new colors and the latter to actually color the table
+%\usepackage{pgfplots}
+%\usepackage{pgfkeys}
+\usepackage{calc}
+\usepackage{tikz}
+\usepackage{setspace}
+%\usepackage[version=3]{mhchem}			%chemische Formeln
+\usepackage[%format=hang
+,labelfont=bf,
+%tableposition=top %no effefct with KOMA class
+]{caption} %Bildunterschriften kleiner
+\renewcommand\captionfont{\footnotesize\sffamily} % Bildtitel umformatieren
+\usepackage[rightcaption]{sidecap}	%caption zentr./seitl.
+\makeatletter
+\newenvironment{sidefigure}{\SC@float[c]{figure}}{\endSC@float} %caption zentr./seitl.
+\makeatother
+\makeatletter
+\newenvironment{sidetable}{\SC@float[c]{table}}{\endSC@float} %caption zentr./seitl.
+\makeatother
+\usepackage[
+separate-uncertainty  = true,
+uncertainty-separator =  {\,},
+mode = text,
+output-decimal-marker ={.},
+multi-part-units      = single,
+range-units           = single,
+%range-phrase          = {--},
+]{siunitx} 		%SI Einheit
+\sisetup{
+	%list-final-separator = { \translate{und} },
+	%range-phrase = { \translate{bis} },
+	%list-pair-separator = { \translate{und} },
+	%exponent-product = \cdot
+	%detect-all, %apply document fonts for siunitx
+	%math-rm=\mathsf,
+	%text-rm=\sffamily,
+	%    locale                  = US,
+	%input-decimal-markers   = {.},
+	%output-decimal-marker   = {.},
+	%input-ignore            = {,},
+	%group-digits            = true,
+	%group-separator         = {,},
+	%group-separator         = {},
+	%tight-spacing           = true,
+	%input-signs             = ,
+	%input-symbols           = ,
+	%input-open-uncertainty  = ,
+	%input-close-uncertainty = ,
+	table-align-text-pre    = false,
+}
+%round-mode              = figures, %places
+%round-precision         = 3,
+%round-integer-to-decimal= false,
+%zero-decimal-to-integer= false,
+%add-decimal-zero = false,
+%add-integer-zero = false,
+
+%table-space-text-pre    = (,
+%table-space-text-post   = ),
+
+\usepackage{textpos}
+
+
+
+% Typografische Grundeinstellungen
+\usepackage{ellipsis} % Weißraum bei Ellipsen optimal
+\usepackage[NewCommands]{ragged2e} % Flattersatz mit (!) Silbentrennung
+\clubpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
+\widowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
+\displaywidowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
+
+% Zusatztext-Elemente
+\usepackage{tabularx, longtable, array} % Tabellen
+
+
+
+\newcommand{\up}[2]{#1\textsuperscript{#2}}    % z.B. \up I{fdfgdfs}
+\newcommand{\down}[2]{#1\textsubscript{#2}}
+
+\newcommand{\OF}{\mbox{OpenFOAM}}
+\newcommand{\CR}{\gls{CR}}
+\newcommand{\WT}{\gls{WT}}
+\newcommand{\BC}{\gls{BC}}
+\newcommand{\ABL}{\gls{ABL}}
+\newcommand{\NVP}{\gls{NVP}}
+\newcommand{\USED}{{\color{red}{USED}}}
+\newcommand{\BRAC}{BRAC University}
+\newcommand{\CFD}{\gls{CFD}}
+\newcommand{\ACR}{\gls{ACR}}
+\newcommand{\kEps}{$k-\varepsilon$}
+\newcommand{\kOmega}{$k-\omega$}
+\newcommand{\R}{\gls{R}}
+\newcommand{\COtwo}{CO$_2$}
+\newcommand{\yplus}{\gls{symb:yplus}}
+\newcommand{\yPlus}{\gls{symb:yplus}}
+\newcommand{\SD}{\gls{SD}}
+
+
+
+% Kommando zum Ausbügeln des Bugs "\subfloat ohne \caption"
+\makeatletter
+\providecommand\phantomcaption{\caption@refstepcounter\@captype}
+\makeatother
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%  Tabelle mit kleinerer Schrift  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{tabularklein}{%
+	\fontsize{8}{12}\selectfont\tabular
+}{%
+	\endtabular
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%Backlinks vom LitVerz zu den Seiten
+% #1: number of distinct back references
+% #2: backref list with distinct entries
+% #3: number of back references including duplicates
+% #4: backref list including duplicates
+\RequirePackage[hyperpageref]{backref}
+\renewcommand{\backreflastsep}{ and~}
+\renewcommand{\backreftwosep}{ and~}
+\renewcommand{\backref}[1]{}% for backref < 1.33 necessary
+\renewcommand{\backrefalt}[4]{
+	\ifnum#1=0
+	%No cited.
+	\else
+	\ifnum#1=1
+	\footnotesize \mbox{(cited on page #2)}
+	\else
+	%\footnotesize \mbox{{\color{darkred}(cited on pages #2)}}
+	\footnotesize \mbox{(cited on pages #2)}
+	\fi
+	\fi
+}
+
+
+\usepackage{enumitem}
+%\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt} % Change size of itemize environments
+
+
+\usepackage{ltablex} %advanced longtables across multiple pages
+\usepackage{ltxtable}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+
+\usepackage{blindtext}
+
+\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.22in}
+
+
+\usepackage[compress,sort,
+numbers
+]{natbib}					% Naturwissenschaftlicher Zitierstil
+%\bibliographystyle{agsm}
+%\bibliographystyle{dinat}
+\bibliographystyle{newapa}
+\renewcommand*{\bibfont}{\sffamily}
+
+
+
+
+\usepackage[
+nomain,
+nonumberlist, 
+acronym,      
+%section
+]      
+{glossaries-extra}
+
+
+
+
+\glsaccessname{unit}
+\setlength{\glsdescwidth}{15cm}
+
+
+
+\glssetcategoryattribute{acronym}{glossdescfont}{textsf}
+\glssetcategoryattribute{acronym}{glossnamefont}{textsf}
+
+\setabbreviationstyle[acronym]{long-short}
+
+
+
+\glssetnoexpandfield{unit}
+
+\newglossarystyle{symbunitlong}{%
+	\vspace*{.3cm}
+	\setglossarystyle{long3col}% base this style on the list style
+	\renewenvironment{theglossary}{% Change the table type --> 3 columns
+		\begin{longtable}{lp{0.6\glsdescwidth}>{\arraybackslash}p{2cm}}}%
+		{\end{longtable}}%
+	%
+	\renewcommand*{\glossaryheader}{%  Change the table header
+		\sffamily\bfseries Sign & \sffamily\bfseries Description & \sffamily\bfseries Unit \\
+		%\hline
+		\endhead}
+	\renewcommand*{\glossentry}[2]{%  Change the displayed items
+		\glstarget{##1}{\sffamily\glossentryname{##1}} %
+		& \sffamily\glossentrydesc{##1}% Description
+		& \sffamily\glsunit{##1}  \tabularnewline
+	}
+}
+
+
+
+
+\usepackage{smartdiagram}
+
+% Colours
+%Primary
+\definecolor{tum_blue}{RGB}{0, 101, 189}
+\definecolor{tum_white}{RGB}{255 , 255 , 255}
+\definecolor{tum_black}{RGB}{0,0,0}
+%Secondary
+\definecolor{tum_blue2}{RGB}{0 , 82 , 147}
+\definecolor{tum_blue3}{RGB}{0 , 51 , 89}
+\definecolor{tum_grey1}{RGB}{088 , 088 , 090}
+\definecolor{tum_grey2}{RGB}{156 , 157 , 159}
+\definecolor{tum_grey3}{RGB}{217 , 218 , 219}
+%Highlights
+\definecolor{tum_beige}{RGB}{218 , 215 , 203}
+\definecolor{tum_orange}{RGB}{227 , 114 , 34}
+\definecolor{tum_green}{RGB}{162 , 173 , 0}
+\definecolor{tum_lightblue}{RGB}{152 , 198 , 234}
+\definecolor{tum_turquoise}{RGB}{100 , 160 , 200}
+\definecolor{darkred}{rgb}{0.7, 0.11, 0.11}
+
+
+
+\usepackage{sidecap} %captions on the side of figures
+
+
+%Differrent font in TOC
+\usepackage[titles,subfigure]{tocloft} % Change font of Chapters,  LOF and LOT
+
+\setlength{\cftbeforechapskip}{2ex}
+\setlength{\cftbeforesecskip}{0.8ex}
+\setlength{\cftbeforesubsecskip}{0.8ex}
+
+\renewcommand{\cftchapfont}{%
+	\sffamily\bfseries
+}
+\renewcommand{\cftchappagefont}{\sffamily}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsecpagefont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecpagefont}{\sffamily}
+
+
+\renewcommand\cftloftitlefont{\sffamily}
+\renewcommand\cftfigfont{\sffamily}
+\renewcommand\cftfigpagefont{\sffamily}
+
+\renewcommand\cftlottitlefont{\sffamily}
+\renewcommand\cfttabfont{\sffamily}
+\renewcommand\cfttabpagefont{\sffamily}
+
+
+%% TOC depth
+%
+%\setcounter{secnumdepth}{4}
+
+
+%%Code für Headers and Footers
+
+\newlength{\marginWidth}
+\setlength\marginWidth{\marginparwidth+\marginparsep}
+\newlength{\fulllinewidth}
+\setlength\fulllinewidth{\textwidth+\marginWidth}
+
+\usepackage{truncate} %Um zu lange Kapiteltitel abzuschneiden
+
+\footskip=1.6cm
+\makeatletter % = mache @ letter
+
+%Vordefinition mehrfachverwendeter Teile
+\def\oddfootSTANDARD{
+	\renewcommand{\@oddfoot}{
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\hfill
+					\strut
+					\hspace{1pt}
+		}}}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\strut %unsichtbares Zeichen
+					%               \large %Größe der Seitenzahl
+					\hspace{5pt}
+					\vrule width 1pt height 1cm
+					\hspace{8pt}
+					\textsf{\thepage}
+					\hfill
+		}}}\hss
+	}
+}
+
+\def\evenfootSTANDARD{
+	\renewcommand{\@evenfoot}{
+		\hspace{-\marginWidth}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					%         \large
+					\strut %unsichtbares Zeichen
+					\hfill
+					\textsf{\thepage}
+					\hspace{5pt}
+					\vrule width 1pt height 1cm
+					\hspace{7pt}
+		}}}\hss
+	}
+}
+
+
+%Standardstil für die gesamte Dissertation
+\newcommand{\ps@thesis}{
+	\renewcommand{\@oddhead}{
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\textsf
+					\hfill
+					\rightmark
+					\strut
+					\hspace{1pt}
+		}}}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\strut %unsichtbares Zeichen
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{5pt}
+					\textsf{\thesection}  %%Zuständig für Nummerierung rechts oben; thesection produziert X.0, X.1
+					\hfill
+		}}}\hss
+	}
+	
+	\renewcommand{\@evenhead}{
+		\hspace{-\marginWidth}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\hfill
+					\strut %unsichtbares Zeichen
+					\textbf{\textsf{Chapter~\thechapter}}
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{7pt}
+					\strut
+		}}}\hss
+		
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\strut %unsichtbares Zeichen
+					\truncate{.9\textwidth}{\leftmark}
+					\hfill
+		}}}\hss
+	}
+	
+	\oddfootSTANDARD
+	\evenfootSTANDARD
+}
+
+
+%Der PLAIN-Style der Chapter- und Sonderseiten muss redefiniert werden.
+\renewcommand{\ps@plain}{
+	\let\@oddhead\@empty
+	\let\@evenhead\@empty
+	\let\@evenfoot\@empty
+	\oddfootSTANDARD
+}
+
+%Spezieller Stil für Inhaltsverzeichnis und Literaturverzeichnis (ohne Nummern wie 0.0 oder B.0)
+\newcommand{\ps@thesisINTRO}{
+	\renewcommand{\@oddhead}{
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\textsf
+					\hfill
+					\textsf{\rightmark}
+					\strut
+					\hspace{1pt}
+		}}}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\strut %unsichtbares Zeichen
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{5pt}
+					\textsf{\thechapter}  %%Zuständig für Nummerierung rechts oben; thesection produziert X.0, X.1
+					\hfill
+		}}}\hss
+	}
+	
+	\renewcommand{\@evenhead}{
+		\hspace{-\marginWidth}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\hfill
+					\strut %unsichtbares Zeichen
+					\textbf{\textsf{Chapter}}
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{7pt}
+					\strut
+		}}}\hss
+		
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\strut %unsichtbares Zeichen
+					\truncate{.9\textwidth}{\leftmark}
+					\hfill
+		}}}\hss
+	}
+	
+	\oddfootSTANDARD
+	\evenfootSTANDARD
+}
+
+
+\newcommand{\ps@thesisAPPENDIX}{
+	\renewcommand{\@oddhead}{
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\textsf
+					\hfill
+					\rightmark
+					\strut
+					\hspace{1pt}
+		}}}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\strut %unsichtbares Zeichen
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{5pt}
+					\textsf
+					\thechapter %\\thesection  %%Zuständig für Nummerierung rechts oben; thesection produziert X.0, X.1
+					\hfill
+		}}}\hss
+	}
+	
+	\renewcommand{\@evenhead}{
+		\hspace{-\marginWidth}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\hfill
+					\strut %unsichtbares Zeichen
+					\textbf{\textsf{Appendix~\thechapter}}
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{7pt}
+					\strut
+		}}}\hss
+		
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\strut %unsichtbares Zeichen
+					\truncate{.9\textwidth}{\leftmark}
+					\hfill
+		}}}\hss
+	}
+	
+	\oddfootSTANDARD
+	\evenfootSTANDARD
+}
+
+
+\newcommand{\ps@thesisLISTS}{
+	\renewcommand{\@oddhead}{
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\textsf
+					\hfill
+					\textsf{\rightmark}
+					\strut
+					\hspace{1pt}
+		}}}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\strut %unsichtbares Zeichen
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{5pt}
+					\textsf
+					\thechapter  %%Zuständig für Nummerierung rechts oben; thesection produziert X.0, X.1
+					\hfill
+		}}}\hss
+	}
+	
+	\renewcommand{\@evenhead}{
+		\hspace{-\marginWidth}
+		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
+					\hfill
+					\strut %unsichtbares Zeichen
+					\textbf{\textsf{Chapter}}
+					\hspace{5pt}
+					\vrule width 1pt
+					\hspace{7pt}
+					\strut
+		}}}\hss
+		
+		\hbox to\textwidth{\vbox{\hbox to\textwidth{
+					\strut %unsichtbares Zeichen
+					%	\truncate{.9\textwidth}{\textsf{\MakeUppercase{\leftmark}}}% Zuständig für Variable hinter | 
+					\truncate{.9\textwidth}{\textsf{\leftmark}}% Zuständig für Variable hinter | 
+					\hfill
+		}}}\hss
+	}
+	
+	\oddfootSTANDARD
+	\evenfootSTANDARD
+}
+
+
+
+
+\newcommand{\ps@reallyempty}{
+	\let\@oddhead\@empty
+	\let\@evenhead\@empty
+	\let\@oddfoot\@empty
+	\let\@evenfoot\@empty
+}
+
+
+\renewcommand{\chaptermark}[1]{\markboth{\textsf{#1}}{}}%markboth hat zwei argumente für die linke und rechte seite
+\renewcommand{\sectionmark}[1]{\markright{\textsf{#1}}}
+
+\makeatother % = mache @ wieder zu nicht-Buchstaben
+\pagestyle{thesis}
+
+
+
+%%Problem mit den Seitenzahlen und Headern auf leeren Seiten nach Kapiteln:
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+	\clearpage
+	{\pagestyle{empty}\origdoublepage}%
+}
+\let\cleardoublepage\clearemptydoublepage
+
+
+%% Change Bibliography Header
+
+
+\makeatletter
+\renewcommand\bibsection{%
+	%	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\MakeUppercase{\bibname}}{\sffamily\bibname}}%
+	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\bibname}{\sffamily\bibname}}%
+}%
+\makeatother
+
+
+
+
+
+\usepackage{emptypage} %removes headers and footers on empty pages.
+
+
+% bold math in section
+\makeatletter
+\g@addto@macro\bfseries{\boldmath}
+\makeatother
+
+
+
+
+\usepackage{makeidx}
+\makeindex
+
+
+
+
+%Change font of tables
+\usepackage{etoolbox}
+
+
+
+%\AtBeginEnvironment{tabular}{\rmfamily}  
+
+%% Counters for figures and tables
+
+\usepackage[figure,table,equation]{totalcount}
+
+
+
+
+%URL smaller
+\usepackage{relsize}
+\renewcommand*{\UrlFont}{\ttfamily\smaller\relax}
+
+% Code in Latex
+
+\usepackage{listings}
+
+\usepackage{morewrites}
+
+\usepackage{caption}
+
+
+
+%  Multiple Columns
+\usepackage{multicol}
+
+
+% Linen über Graphiken
+% Gitter über Graphik
+\newcommand{\showgrid}[2]{%
+	\newcommand{\gridlen}{20}  % 5 = 1 cm  % 20 = 4 cm
+	\resizebox{#1}{!}{%
+		\begin{tikzpicture}[inner sep=0]
+		% Bild laden
+		\node[anchor=south west] (image) at (0, 0) {#2};
+		% Koordinaten fast oben rechts
+		\path (image.north east) -- ++(-\gridlen, -\gridlen) coordinate (obenrechts);
+		
+		\begin{scope}[red]
+		% Gitter unten links
+		\draw[xstep=.2, ystep=.2, very thin] (0, 0) grid (\gridlen, \gridlen);
+		\draw[xstep=1, ystep=1, semithick] (0, 0) grid (\gridlen, \gridlen);
+		% Gitter oben rechts
+		\draw[xstep=.2, ystep=.2, shift={(obenrechts)}, very thin] (0, 0) grid (\gridlen, \gridlen);
+		\draw[xstep=1, ystep=1, shift={(obenrechts)}, semithick] (0, 0) grid (\gridlen, \gridlen);
+		
+		% Rahmen
+		\draw (0, 0) rectangle (image.north east);
+		\end{scope}
+		\end{tikzpicture}%
+	}
+}
+
+%%%
+
+
+
+
+
+
+
+
+
+%Input something on the left page, use \cleardoublepage to force on right
+\makeatletter
+\newcommand*{\cleartoleftpage}{%
+	\clearpage
+	\if@twoside
+	\ifodd\c@page
+	\hbox{}\newpage
+	\if@twocolumn
+	\hbox{}\newpage
+	\fi
+	\fi
+	\fi
+}
+\makeatother
+
+
+
+
+%Captions within pdfpages
+
+\makeatletter
+\newcommand*{\AM@pagecommandstar}{}
+\define@key{pdfpages}{pagecommand*}{\def\AM@pagecommandstar{#1}}
+\patchcmd{\AM@output}{\begingroup\AM@pagecommand\endgroup}
+{\ifthenelse{\boolean{AM@firstpage}}{\begingroup\AM@pagecommandstar\endgroup}{\begingroup\AM@pagecommand\endgroup}}{}{} % Patch to use new option
+\patchcmd{\AM@split@optionsii}{\equal{pagecommand}{\AM@temp}\or}
+{\equal{pagecommand}{\AM@temp}\or\equal{pagecommand*}{\AM@temp}\or}{}{}
+\makeatother
+
+%Captions within pdfpages
+
+\usepackage[percent]{overpic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LaTeX Overlay Generator - Annotated Figures v0.0.1
+% Created with http://ff.cx/latex-overlay-generator/
+% If this generator saves you time, consider donating 5,- EUR! :-)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\annotatedFigureBoxCustom{bottom-left}{top-right}{label}{label-position}{box-color}{label-color}{border-color}{text-color}
+\newcommand*\annotatedFigureBoxCustom[8]{\draw[#5,thick,rounded corners] (#1) rectangle (#2);\node at (#4) [fill=#6,thick,shape=circle,draw=#7,inner sep=2pt,font=\sffamily,text=#8] {\textbf{#3}};}
+%\annotatedFigureBox{bottom-left}{top-right}{label}{label-position}
+\newcommand*\annotatedFigureBox[4]{\annotatedFigureBoxCustom{#1}{#2}{#3}{#4}{white}{white}{black}{black}}
+\newcommand*\annotatedFigureText[4]{\node[draw=none, anchor=south west, text=#2, inner sep=0, text width=#3\linewidth,font=\sffamily] at (#1){#4};}
+
+\newcommand*\annotatedFigureBoxCustomBlack[8]{\draw[#5,thick,rounded corners] (#1) rectangle (#2);\node at (#4) [fill=#6,thick,shape=circle,draw=#7,inner sep=2pt,font=\sffamily,text=#8] {\textbf{#3}};}
+%\annotatedFigureBox{bottom-left}{top-right}{label}{label-position}
+\newcommand*\annotatedFigureBoxBlack[4]{\annotatedFigureBoxCustomBlack{#1}{#2}{#3}{#4}{black}{white}{black}{black}}
+\newcommand*\annotatedFigureTextBlack[4]{\node[draw=none, anchor=south west, text=#2, inner sep=0, text width=#3\linewidth,font=\sffamily] at (#1){#4};}
+
+\newcommand*\annotatedFigureBoxCustomGray[8]{\draw[#5,thick,rounded corners] (#1) rectangle (#2);\node at (#4) [fill=#6,thick,shape=circle,draw=#7,inner sep=2pt,font=\sffamily,text=#8] {\textbf{#3}};}
+%\annotatedFigureBox{bottom-left}{top-right}{label}{label-position}
+\newcommand*\annotatedFigureBoxGray[4]{\annotatedFigureBoxCustomBlack{#1}{#2}{#3}{#4}{gray}{white}{gray}{black}}
+\newcommand*\annotatedFigureTextGray[4]{\node[draw=none, anchor=south west, text=#2, inner sep=0, text width=#3\linewidth,font=\sffamily] at (#1){#4};}
+
+\newenvironment {annotatedFigure}[1]{\centering\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) { #1};\begin{scope}[x={(image.south east)},y={(image.north west)}]}{\end{scope}\end{tikzpicture}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+%% Costom commands
+
+\usepackage{soul}
+
+%% New itemize environment for equations
+
+\newenvironment{equationitem}
+{ \begin{itemize}
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{1pt}
+		\setlength{\parsep}{1pt}}
+	{ \end{itemize}     }  
+
+
+%% Appendix in toc
+
+\usepackage[
+%  toc
+]{appendix}
+
+\usepackage[
+% obeyDraft
+]{todonotes}
+
+
+
+\usepackage{colortbl} %colored tables
+\usepackage{multirow} % merge rown in tables
+
+\usepackage{placeins} %clear floats without new page
+
+\usepackage[columns=2,minspace=100pt]{idxlayout} %modify layout of index

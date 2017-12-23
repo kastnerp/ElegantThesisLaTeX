@@ -1,0 +1,460 @@
+%Ein eigenes Symbolverzeichnis erstellen
+\newglossary[slg]{symbolslist}{syi}{syg}{List of symbols}
+
+%Den Punkt am Ende jeder Beschreibung deaktivieren
+\renewcommand*{\glspostdescription}{}
+
+\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+
+
+\makeglossaries
+
+
+\newglossaryentry{symb:mu}{
+	name=$\mu$,
+  	description={dynamic viscosity},
+  	unit={$\si{\kg\per\metre\per\second}$}, 
+  	sort=GREEKmu,   	
+  	type=symbolslist
+}
+
+\newglossaryentry{symb:mu_t}{
+	name=$\mu_t$,
+	description={turbulent dynamic viscosity},
+	unit={$\si{\kg\per\metre\per\second}$}, 
+	sort=GREEKmut,   	
+	type=symbolslist
+}
+
+\newglossaryentry{symb:nu}{
+	name=\ensuremath{\nu},
+	description={kinematic viscosity},
+	unit={$\si{\square\metre\per\second}$}, 
+	sort=GREEKnu,   	
+	type=symbolslist
+}
+
+\newglossaryentry{symb:nut}{
+	name=\ensuremath{\nu_t},
+	description={turbulent eddy viscosity},
+	unit={$\si{\square\metre\per\second}$}, 
+	sort=GREEKnut,   	
+	type=symbolslist
+}
+
+
+
+\newglossaryentry{symb:height}{
+	name=\ensuremath{H},
+ 	description={height of arbitrary geometries},
+ 	unit={\si{m}},
+ 	sort=LATINh,
+ 	type=symbolslist
+}
+
+\newglossaryentry{symb:order_of_convergence}{
+	name=\ensuremath{p},
+	description={order of convergence},
+	unit={\si{-}},
+	sort=LATINp,
+	type=symbolslist
+}
+
+\newglossaryentry{symb:grid_spacing}{
+	name=\ensuremath{h},
+	description={normalized grid spacing},
+	unit={\si{-}},
+	sort=LATINh,
+	type=symbolslist
+}
+
+\newglossaryentry{symb:grid_refinement_ratio}{
+	name=\ensuremath{r},
+	description={grid refinement ratio},
+	unit={\si{-}},
+	sort=LATINr,
+	type=symbolslist
+}
+
+\newglossaryentry{symb:length}{
+	name=\ensuremath{L},
+	description={length  of arbitrary geometries},
+	unit={$\si{m}$},
+	sort=LATINl,
+	type=symbolslist
+}
+
+\newglossaryentry{symb:k}{
+	name=$k$,
+	description={turbulent kinetic energy},
+	unit={\si{\square\metre\per\square\second}}, 
+	sort=LATINk,  	
+	type=symbolslist
+}
+
+\newglossaryentry{symb:epsilon}{
+	name=$\varepsilon$,
+	description={turbulence dissipation rate},
+	unit={\si{\metre\squared\per\cubic\second}}, 
+	sort=GREEKepsilon,   	
+	type=symbolslist
+}
+
+\newglossaryentry{symb:omega}{
+	name=$\omega$,
+	description={specific dissipation rate},
+	unit={$\si{\per\second}$}, 
+	sort=GREEKomega,   	
+	type=symbolslist
+}
+
+\newglossaryentry{symb:z_0}{
+	name=$z_0$,
+	description={aerodynamic roughness length},
+	unit={$\si{\metre}$}, 
+	sort=LATINz,   	
+	type=symbolslist
+}
+
+%  \newglossaryentry{symb:Pi}{name=\ensuremath{\pi},
+%  	description={Geometrical value},
+%  	unit={},
+%  	type=symbolslist
+%}
+
+  \newglossaryentry{symb:rho}{
+  	name=\ensuremath{\rho},
+  	description={fuid density},
+  	unit={\si{\kilo\gram\per\cubic\metre}},
+  	sort=GREEKrho,
+  	type=symbolslist
+}
+
+  \newglossaryentry{symb:kappa}{
+  	name=\ensuremath{\kappa},
+  	description={von Karman constant},
+  	unit={-},
+  	sort=GREEKkappa,
+  	type=symbolslist
+  }
+  
+  
+%  \newglossaryentry{energyconsump}{name=\ensuremath{P},
+%  	description={Energy consumption},
+%  	unit={\si{kW}},
+%  	type=symbolslist
+%}
+  
+ \newglossaryentry{symb:c_p}{
+ 	name=\ensuremath{c_P},
+ 	description={pressure coefficient},
+ 	unit={\si{-}},
+ 	sort=LATINcp, 
+ 	type=symbolslist
+}
+
+% \newglossaryentry{symb:c_oc}{name=\ensuremath{c_{oc}},
+% 	description={Mean concentration in occupied zone},
+% 	unit={\si{\kilo\gram\per\cubic\metre}},
+% 	type=symbolslist
+% }
+
+% \newglossaryentry{symb:c_r}{name=\ensuremath{c_r},
+% 	description={Exit concentration},
+% 	unit={\si{\kilo\gram\per\cubic\metre}},
+% 	type=symbolslist
+% }
+
+ \newglossaryentry{concentration_of_pollutants}{
+ 	name=\ensuremath{\bar{c}},
+ 	description={concentration of pollutant},
+ 	unit={\si{\kilo\gram\per\cubic\metre}},
+ 	sort=LATINcpol, 
+ 	type=symbolslist
+ }
+ 
+  \newglossaryentry{symb:u*}{
+  	name=\ensuremath{u^*},
+  	description={friction velocity},
+  	unit={\si{\metre\per\second}},
+  	sort=LATINuf, 
+  	type=symbolslist
+  }
+
+  \newglossaryentry{symb:u_ref}{
+  	name=\ensuremath{u_{ref}},
+  	description={reference velocity},
+  	unit={\si{\metre\per\second}},
+  	sort=LATINuref, 
+  	type=symbolslist
+  }
+
+  \newglossaryentry{symb:u}{
+  	name=\ensuremath{u},
+	description={velocity},
+	unit={\si{\metre\per\second}},
+	sort=LATINu, 
+	type=symbolslist
+}
+
+  \newglossaryentry{symb:p}{
+  	name=\ensuremath{p},
+	description={pressure},
+	unit={\si{\kilogram\per\metre\square\second}},
+	sort=LATINp, 
+	type=symbolslist
+}
+
+
+  \newglossaryentry{symb:h_ref}{
+  	name=\ensuremath{h_{ref}},
+	description={reference height},
+	unit={\si{\metre}},
+	sort=LATINhref, 
+	type=symbolslist
+}
+
+  \newglossaryentry{symb:yplus}{
+  	name=\ensuremath{y^+},
+	description={dimensionless wall distance},
+	unit={\si{-}},
+	sort=LATINyplus, 
+	type=symbolslist
+}
+
+  \newglossaryentry{symb:uplus}{
+  	name=\ensuremath{U^+},
+	description={dimensionless velocity},
+	unit={\si{-}},
+	sort=LATINuplus, 
+	type=symbolslist
+}
+
+
+  \newglossaryentry{symb:z_ground}{
+  	name=\ensuremath{z_{Ground}},
+	description={minimum coordinate value in z-direction},
+	unit={\si{\metre}},
+	sort=LATINzground, 
+	type=symbolslist
+}
+
+
+
+
+ \newglossaryentry{symb:q_ref}{
+ 	name=\ensuremath{Q_{ref}},
+ 	description={reference ventilation rate},
+ 	unit={\si{\cubic\metre\per\second}},
+ 	sort=LATINqref, 
+ 	type=symbolslist
+ }
+
+
+ \newglossaryentry{symb:reynoldsn}{
+	name=\ensuremath{Re},
+	description={Reynolds number},
+	unit={\si{-}},
+	sort=LATINre_b, 
+	type=symbolslist
+}
+
+ \newglossaryentry{symb:rey_b}{
+ 	name=\ensuremath{Re_b},
+ 	description={Reynolds number around a bluff body},
+ 	unit={\si{-}},
+ 	sort=LATINreb, 
+ 	type=symbolslist
+ }
+
+
+ \newglossaryentry{symb:rey_w}{
+ 	name=\ensuremath{Re_w},
+ 	description={Reynolds number at an opening},
+ 	unit={\si{-}},
+ 	sort=LATINre, 
+ 	type=symbolslist
+ }
+ 
+  \newglossaryentry{Cartesian_coordinates}{
+  	name=\ensuremath{x, y, z},
+  description={Cartesian coordinates},
+  unit={\si{\metre}},
+  sort=LATINxyz,  
+  type=symbolslist
+}
+
+  \newglossaryentry{symb:acr}{
+  	name=\ensuremath{ACR},
+  	description={air change rate},
+  	unit={\si{\per\hour}},
+  	sort=LATINacr,  
+  	type=symbolslist
+  }
+
+  \newglossaryentry{symb:alpha}{
+  	name=\ensuremath{\alpha},
+  	description={wind shear exponent},
+  	unit={-},
+  	sort=GREEKalpha,  
+  	type=symbolslist
+  }
+
+
+  \newglossaryentry{symb:epsrel}{
+  	name=\ensuremath{\varepsilon_{rel}},
+  	description={relative error},
+  	unit={-},
+  	sort=GREEKeps,  
+  	type=symbolslist
+  }
+
+
+  \newglossaryentry{symb:E}{
+  	name=\ensuremath{E},
+  	description={estimated fractional error},
+  	unit={-},
+  	sort=LATINe,
+  	type=symbolslist
+  }
+
+  \newglossaryentry{symb:f(h)}{
+  	name=\ensuremath{f_{h = 1,2,3}},
+  	description={solution functional for different grid sizes},
+  	unit={\si{\cubic\metre\per\second}},
+  	sort=LATINf,
+  	type=symbolslist
+  }
+
+  \newglossaryentry{symb:C_mu}{
+	name=\ensuremath{C_{\mu}},
+	description={constant},
+	unit={\si{-}},
+	sort=GREEKcmu,
+	type=symbolslist
+}
+
+  \newglossaryentry{symb:grid_convergence_index}{
+  	name=\ensuremath{CGI},
+  	description={Grid convergence index},
+  	unit={\%},
+  	sort=LATINcgi,
+  	type=symbolslist
+  }
+
+ \newglossaryentry{symb:eddy_visc_ratio}{
+ 	name=\ensuremath{\frac{\mu_t}{\mu}},
+	description={eddy viscosity ratio},
+	unit={-},
+	sort=GREEKmu,  
+	type=symbolslist
+}
+
+ \newglossaryentry{symb:turbulence_intensity}{
+ 	name=\ensuremath{T_i},
+	description={turbulence intensity},
+	sort=LATINt,
+	unit={\%},
+	type=symbolslist
+}
+
+ \newglossaryentry{symb:phi}{
+ 	name=\ensuremath{\phi},
+	description={mass flow through the cell faces},
+	unit={\si{\kilogram\per\second}},
+	sort=GREEKphi,  
+	type=symbolslist
+}
+
+
+
+
+ \newglossaryentry{symb:uprime}{
+	name=\ensuremath{u^\prime},
+	description={fluctuating part of velocity},
+	unit={\si{\metre\per\second}},
+	sort=LATINuprime,  
+	type=symbolslist
+}
+
+ \newglossaryentry{symb:ubar}{
+	name=\ensuremath{\bar{u}},
+	description={mean velocity},
+	unit={\si{\metre\per\second}},
+	sort=LATINubar,  
+	type=symbolslist
+}
+
+
+
+
+%Befehle für Abkürzungen
+\newacronym{DES}{DES}		{detached eddy simulation}
+\newacronym{DNS}{DNS}		{direct numerical simulation}
+\newacronym{RANS}{RANS}		{Reynolds-averaged Navier-Stokes}
+\newacronym{URANS}{URANS}	{Unsteady Reynolds-averaged Navier-Stokes}
+\newacronym{ABL}{ABL}		{atmospheric boundary layer}
+\newacronym{NVP}{NVP}		{natural ventilation potential}
+%\newacronym{NV}{NV}			{natural ventilation}
+%\newacronym{PCP}{PCP}		{passive cooling potential}
+\newacronym{IAQ}{IAQ}		{indoor air quality}
+\newacronym{LES}{LES}		{large eddy simulation}
+\newacronym[plural=BCs, firstplural = boundary conditions (BCs)]{BC}{BC}			{boundary condition}
+\newacronym{CFD}{CFD}		{computational fluid dynamics}
+\newacronym{CAD}{CAD}		{Computer-aided design}
+\newacronym{STL}{STL} 		{Surface Tesselation Language}
+\newacronym{OpenFOAM}{OpenFOAM} {Open source Field Operation And Manipulation}
+\newacronym{SIMPLE}{SIMPLE}	{Semi-Implicit Method for Pressure-Linked Equations}
+\newacronym{SST}{SST}		{Shear Stress Transport}
+\newacronym{PDE}{PDE}		{partial differential equations}
+\newacronym{GCI}{GCI}		{grid convergence index}
+\newacronym{COST}{COST}		{European Cooperation on Science and Technology}
+\newacronym[plural=ACRs, firstplural = air change rates (ACRs)]{ACR}{ACR}		{air change rate}
+\newacronym{R}{$R^2$}		{coefficient of determination}
+\newacronym{ppm}{ppm}		{parts per million}
+\newacronym{RNG}{RNG}		{Renormalization Group Theory}
+\newacronym[plural=NSEs, firstplural = Navier–Stokes equations (NSEs)]{NSE}{NSE}		{Navier–Stokes equation}
+\newacronym{DIN}{DIN}		{Deutsche Industrie Norm}
+\newacronym{RE}{RE}		    {Richardson Extrapolation}
+\newacronym[plural=CRs, firstplural = classrooms (CRs)]{CR}{CR}			{classroom}
+\newacronym{WT}{WT}			{wind tunnel}
+\newacronym{EES}{EES}		{Engineering Equation Solver}
+\newacronym{BRAC}{BRAC}		{Bangladesh Rural Advancement Committee}
+\newacronym{SWERA}{SWERA}	{Solar and Wind Energy Resource Assessment}
+\newacronym{COMIS}{COMIS} 	{Conjunction of Multizone Infiltration Specialists}
+\newacronym{CONTAM}{CONTAM}	{Multizone Airflow and Contaminant Transport Analysis Software}
+\newacronym{GAMG}{GAMG}		{generalised geometric-algebraic multi-grid}
+\newacronym{LDA}{LDA}		{laser Doppler anemometer}
+\newacronym{MPI}{MPI}		{Message Passing Interface}
+\newacronym{GFA}{GFA}		{gross floor area}
+\newacronym{GUI}{GUI}		{graphical user interface}
+\newacronym{SD}{SD}			{standard deviation}
+\newacronym{FVM}{FVM}		{Finite Volume Method}
+\newacronym{LIC}{LIC}		{Line Integral Convolution}
+%ppm
+
+%Eine Abkürzung mit Glossareintrag
+%\newacronym{AD}{AD}{Active Directory\protect\glsadd{glos:AD}}
+
+
+
+%%Befehle für Glossar
+%\newglossaryentry{glos:AD}{
+%	name=Active Directory,
+%	description={Active Directory ist in einem Windows 2000/" "Windows
+%		Server 2003-Netzwerk}
+%}
+%\newglossaryentry{glos:AntwD}{name=Antwortdatei, description={Informationen zum
+%		Installieren einer Anwendung oder des Betriebssystems.}}
+
+
+
+
+
+
+
+
+
+
+
+
