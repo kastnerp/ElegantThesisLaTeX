@@ -1,4 +1,4 @@
-# CleanThesisLaTeX
+# ElegantThesisLaTeX
 
 ## Features
 
