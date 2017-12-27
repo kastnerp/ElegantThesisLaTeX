@@ -3,8 +3,13 @@
 % !TeX spellcheck = en_US
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BASIC OPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \documentclass[
-%draft,
+draft,
 12pt,
 %oneside,
 twoside,
@@ -23,12 +28,6 @@ parskip=half-,
 
 
 
-\RedeclareSectionCommands[ %Linebreak after paragraphs
-afterskip=1sp
-]{paragraph,subparagraph}
-
-\usepackage{etex}
-\reserveinserts{20}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,26 +101,33 @@ BoldItalicFont=*-bolditalic,
 %%%\usepackage{luaotfload,lualatex-math}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%FONT MISC SETTINGS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\usepackage[T1, LGR]{fontenc} % LGR caused greek letters in footline
 
+\RedeclareSectionCommands[ %Linebreak after paragraphs
+afterskip=1sp
+]{paragraph,subparagraph}
+\usepackage{etex}
+\reserveinserts{20}
 \usepackage[english]{babel}				% Schriftsatzerweiterung
 \usepackage{alphabeta} % Use greek letters as text and in PDF bookmarks
-
 \usepackage{bm}								% Enable bold math symbols
 \usepackage{microtype}%
-
-
 %\usepackage{geometry}
-\usepackage{graphicx} 					% Grafiken einbinden
+
 \usepackage{wrapfig}					% Von Text umflossene Grafiken
 \usepackage{subfig}
 %\usepackage{subcaption}
 \captionsetup[subfloat]{font=sf,size=footnotesize}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%GRAPHICS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\usepackage{graphicx} 					% Grafiken einbinden
 \makeatletter							% Der folgende neue Befehl bindet Bilder in der Originalgrösse ein, falls sie weniger breit als die Seite sind. Sonst wird das Bild auf Seitenbreite skaliert.
 \def\ScaleIfNeeded{%
 	\ifdim\Gin@nat@width>\linewidth
@@ -157,7 +163,9 @@ BoldItalicFont=*-bolditalic,
 \makeatother
 
 
-%%%%%%% Titelseite  %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TITLEPAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\titel}{Customizing OpenFOAM to assess\\ wind-induced natural ventilation\\ potential of classrooms\newline {\Large A case study for BRAC University}}
 \newcommand{\untertitel}{und hier kommt der Untertitel}
@@ -220,21 +228,15 @@ BoldItalicFont=*-bolditalic,
 }
 
 \usepackage[]{hypcap}  %link to image directly, not to caption
-
-
 \usepackage{bookmark}
-
-
-\usepackage{xspace}						% Macht immer ein Leerzeichen, außer Nutzer will mehrere Leerzeichen
-
+\usepackage{xspace}				% Macht immer ein Leerzeichen, außer Nutzer will mehrere Leerzeichen
 %\usepackage{layout}						% Layout überprüfen
-\usepackage{setspace} 	% Zeilenabstand singelspacing, onehalfspacing, doublespacing,
-\usepackage[english, plain]{fancyref}
-\usepackage{booktabs} % Tabellenlinien
+\usepackage{setspace} 	% Linespacing: singelspacing, onehalfspacing, doublespacing
+\usepackage[english, plain]{fancyref} %Cross-referencing
+\usepackage{booktabs} % Lines betwenn tables
 \usepackage{upgreek}
-
-\usepackage{longtable}					% Mehrseitige Tabellen
-\usepackage{tablefootnote}
+\usepackage{longtable}					% Tables that are longer than one page
+\usepackage{tablefootnote}				% Footnote in tables
 \usepackage{lscape}						% Landscpae Seiten
 \usepackage{pdflscape}					% Landscape Seiten drehen
 \usepackage{gensymb}					% Celsius anzeigen

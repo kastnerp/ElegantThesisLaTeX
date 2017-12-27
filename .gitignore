@@ -262,6 +262,6 @@ TSWLatexianTemp*
 # files that come with the template itself
 *.dll
 *.exe
-*.pdf
+#*.pdf
 *.otf
 *.db
