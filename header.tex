@@ -9,7 +9,7 @@
 
 
 \documentclass[
-draft,
+%draft,
 12pt,
 %oneside,
 twoside,
@@ -21,13 +21,59 @@ toc=bibliography,							% Literaturverzeichnis mit ins Inhaltsverzeichnis eintra
 toc=listof,
 footnotes=multiple,							% mehrere Fußnoten separieren
 %parindent,									% Absatzstil hier: Einrückung;
-%parskip=half,								% Absatzstil hier: keine Einrückung;
+parskip=half,								% Absatzstil hier: keine Einrückung;
 numbers=noenddot,							% Keine Punkte nach Nummerierung
-parskip=half-,
 ]{scrbook}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TITLEPAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\titel}{Customizing OpenFOAM to assess\\ wind-induced natural ventilation\\ potential of classrooms\newline {\Large A case study for BRAC University}}
+\newcommand{\untertitel}{und hier kommt der Untertitel}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
+\newcommand{\art}{Master's Thesis}
+\newcommand{\fachgebiet}{}
+\newcommand{\autor}{Patrick Kastner}
+\newcommand{\wohnort}{81369 München}
+\newcommand{\univname}{Technische Universität München}
+\newcommand{\studienbereich}{Energy-efficient and Sustainable Building}
+\newcommand{\groupname}{}
+\newcommand{\deptname}{}
+\newcommand{\degreename}{Master of Science (MSc)}
+\newcommand{\matrikelnr}{03650879}
+\newcommand{\erstgutachter}{Prof. Dipl.-Ing. Thomas Auer}
+\newcommand{\zweitgutachter}{Dr. rer. nat. Wolfgang Kessling}
+\newcommand{\drittgutachter}{Markus Krauß, M.Eng.}
+\newcommand{\viertgutachter}{Dipl.-Ing. Christian Oberdorf}
+\newcommand{\ort}{München}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CUSTOM COMMANDS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\up}[2]{#1\textsuperscript{#2}}    % z.B. \up I{fdfgdfs}
+\newcommand{\down}[2]{#1\textsubscript{#2}}
+
+\newcommand{\OF}{\mbox{OpenFOAM}}
+\newcommand{\CR}{\gls{CR}}
+\newcommand{\WT}{\gls{WT}}
+\newcommand{\BC}{\gls{BC}}
+\newcommand{\ABL}{\gls{ABL}}
+\newcommand{\NVP}{\gls{NVP}}
+\newcommand{\USED}{{\color{red}{USED}}}
+\newcommand{\BRAC}{BRAC University}
+\newcommand{\CFD}{\gls{CFD}}
+\newcommand{\ACR}{\gls{ACR}}
+\newcommand{\kEps}{$k-\varepsilon$}
+\newcommand{\kOmega}{$k-\omega$}
+\newcommand{\R}{\gls{R}}
+\newcommand{\COtwo}{CO$_2$}
+\newcommand{\yplus}{\gls{symb:yplus}}
+\newcommand{\yPlus}{\gls{symb:yplus}}
+\newcommand{\SD}{\gls{SD}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,9 +85,7 @@ parskip=half-,
 \usepackage{fontspec}
 \usepackage{luatextra}
 
-
 %FONT Combination 1
-
 
 \setmainfont{Erewhon}[
 Extension=.otf,
@@ -87,6 +131,8 @@ BoldItalicFont=*-bolditalic,
 %\setmonofont{CourierStd.otf}[
 %ExternalLocation=./fonts/,]
 
+%LEAVE THIS UNTOUCHED FOR NOW
+
 
 %%%\setmathfont{XITS Math}
 %%%\setmathfont[range=\mathup/{num,latin,Latin,greek,Greek}]{Minion Pro}
@@ -117,10 +163,24 @@ afterskip=1sp
 \usepackage{microtype}%
 %\usepackage{geometry}
 
+\makeatletter
+\g@addto@macro\bfseries{\boldmath} % bold math in section heading
+\makeatother
+
 \usepackage{wrapfig}					% Von Text umflossene Grafiken
 \usepackage{subfig}
-%\usepackage{subcaption}
-\captionsetup[subfloat]{font=sf,size=footnotesize}
+
+
+
+\usepackage{ellipsis} % Weißraum bei Ellipsen optimal
+\usepackage[NewCommands]{ragged2e} % Flattersatz mit (!) Silbentrennung
+\clubpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
+\widowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
+\displaywidowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
+
+
+\usepackage{marvosym}						% Euro-Symbol verfügbar machen
+\usepackage[official,right]{eurosym}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,8 +197,12 @@ afterskip=1sp
 	\fi
 }
 \makeatother
-% % % % % % % % % % % % % % % % % % % %
-%\usepackage{bigfoot}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%COLORS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \usepackage[dvipsnames]{xcolor}
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
@@ -146,14 +210,31 @@ afterskip=1sp
 \definecolor{tumblue}{RGB}{15 , 27 , 95}
 \definecolor{tumblue}{RGB}{15 , 27 , 95}
 \definecolor{lightblue}{RGB}{220 , 230 , 241}
+\definecolor{tum_blue}{RGB}{0, 101, 189}
+\definecolor{tum_white}{RGB}{255 , 255 , 255}
+\definecolor{tum_black}{RGB}{0,0,0}
+%Secondary
+\definecolor{tum_blue2}{RGB}{0 , 82 , 147}
+\definecolor{tum_blue3}{RGB}{0 , 51 , 89}
+\definecolor{tum_grey1}{RGB}{088 , 088 , 090}
+\definecolor{tum_grey2}{RGB}{156 , 157 , 159}
+\definecolor{tum_grey3}{RGB}{217 , 218 , 219}
+%Highlights
+\definecolor{tum_beige}{RGB}{218 , 215 , 203}
+\definecolor{tum_orange}{RGB}{227 , 114 , 34}
+\definecolor{tum_green}{RGB}{162 , 173 , 0}
+\definecolor{tum_lightblue}{RGB}{152 , 198 , 234}
+\definecolor{tum_turquoise}{RGB}{100 , 160 , 200}
+\definecolor{darkred}{rgb}{0.7, 0.11, 0.11}
 
 
-% % % % % % % % % % % % % % % % % % % %
-\usepackage{marvosym}						% Euro-Symbol verfügbar machen
 
-\usepackage[official,right]{eurosym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%URLs
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %\KOMAoptions{DIV=last}					% Anpassung des Satzspiegels an Schriften, (nur bei DIV=calc wirksam)
-%\usepackage{blindtext}					% Blindtext erzeugen
 \PassOptionsToPackage{hyphens}{url}
 %\usepackage[hyphenbreaks]{breakurl}
 \usepackage[hyphens]{url}
@@ -163,33 +244,17 @@ afterskip=1sp
 \makeatother
 
 
+%URL smaller
+\usepackage{relsize}
+\renewcommand*{\UrlFont}{\ttfamily\smaller\relax}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%TITLEPAGE
+%HYPERREF
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\titel}{Customizing OpenFOAM to assess\\ wind-induced natural ventilation\\ potential of classrooms\newline {\Large A case study for BRAC University}}
-\newcommand{\untertitel}{und hier kommt der Untertitel}
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
-\newcommand{\art}{Master's Thesis}
-\newcommand{\fachgebiet}{}
-\newcommand{\autor}{Patrick Kastner}
-\newcommand{\wohnort}{81369 München}
-\newcommand{\univname}{Technische Universität München}
-\newcommand{\studienbereich}{Energy-efficient and Sustainable Building}
-\newcommand{\groupname}{}
-\newcommand{\deptname}{}
-\newcommand{\degreename}{Master of Science (MSc)}
-\newcommand{\matrikelnr}{03650879}
-\newcommand{\erstgutachter}{Prof. Dipl.-Ing. Thomas Auer}
-\newcommand{\zweitgutachter}{Dr. rer. nat. Wolfgang Kessling}
-\newcommand{\drittgutachter}{Markus Krauß, M.Eng.}
-\newcommand{\viertgutachter}{Dipl.-Ing. Christian Oberdorf}
-\newcommand{\ort}{München}
-
-
 
 %\usepackage[hang, flushmargin]{footmisc}
-\usepackage[breaklinks, hidelinks,hyperfootnotes=false, unicode]{hyperref} % automatische Hyperlinks in Verzeichnissen
+\usepackage[breaklinks, hidelinks,hyperfootnotes=false, unicode]{hyperref} %Clickable hyperlinks everywhere
 \def\UrlBigBreaks{\do\/\do-\do:}
 \hypersetup{
 	draft=false,
@@ -227,16 +292,13 @@ afterskip=1sp
 	pdfencoding=auto,
 }
 
-\usepackage[]{hypcap}  %link to image directly, not to caption
+
 \usepackage{bookmark}
-\usepackage{xspace}				% Macht immer ein Leerzeichen, außer Nutzer will mehrere Leerzeichen
+\usepackage{xspace}				% Fixes usage of spaces
 %\usepackage{layout}						% Layout überprüfen
 \usepackage{setspace} 	% Linespacing: singelspacing, onehalfspacing, doublespacing
 \usepackage[english, plain]{fancyref} %Cross-referencing
-\usepackage{booktabs} % Lines betwenn tables
 \usepackage{upgreek}
-\usepackage{longtable}					% Tables that are longer than one page
-\usepackage{tablefootnote}				% Footnote in tables
 \usepackage{lscape}						% Landscpae Seiten
 \usepackage{pdflscape}					% Landscape Seiten drehen
 \usepackage{gensymb}					% Celsius anzeigen
@@ -244,11 +306,7 @@ afterskip=1sp
 \usepackage{pdfpages}
 \usepackage[footnote]{acronym}			% Abkürzungsverzeichnis
 \usepackage{mathtools} % braces in math environment
-
-
 \usepackage{epigraph}
-
-\usepackage{color, colortbl}	%You will need the following two packages, the first to define new colors and the latter to actually color the table
 %\usepackage{pgfplots}
 %\usepackage{pgfkeys}
 \usepackage{calc}
@@ -267,6 +325,13 @@ afterskip=1sp
 \makeatletter
 \newenvironment{sidetable}{\SC@float[c]{table}}{\endSC@float} %caption zentr./seitl.
 \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%UNITS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \usepackage[
 separate-uncertainty  = true,
 uncertainty-separator =  {\,},
@@ -310,41 +375,54 @@ range-units           = single,
 
 \usepackage{textpos}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TABLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-% Typografische Grundeinstellungen
-\usepackage{ellipsis} % Weißraum bei Ellipsen optimal
-\usepackage[NewCommands]{ragged2e} % Flattersatz mit (!) Silbentrennung
-\clubpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
-\widowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
-\displaywidowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
-
-% Zusatztext-Elemente
+\usepackage{booktabs} % Lines betwenn tables
+\usepackage{longtable}					% Tables that are longer than one page
+\usepackage{tablefootnote}				% Footnote in tables
 \usepackage{tabularx, longtable, array} % Tabellen
+\usepackage{ltablex} %advanced longtables across multiple pages
+\usepackage{ltxtable}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\usepackage{etoolbox} %Change font of tables
+\usepackage{multirow} % merge rown in tables
+\usepackage{color, colortbl}	%You will need the following two packages, the first to define new colors and the latter to actually color the table
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TABLE WITH SMALL FONT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\newenvironment{tabularsmall}{%
+	\fontsize{8}{12}\selectfont\tabular
+}{%
+	\endtabular
+}
 
-\newcommand{\up}[2]{#1\textsuperscript{#2}}    % z.B. \up I{fdfgdfs}
-\newcommand{\down}[2]{#1\textsubscript{#2}}
 
-\newcommand{\OF}{\mbox{OpenFOAM}}
-\newcommand{\CR}{\gls{CR}}
-\newcommand{\WT}{\gls{WT}}
-\newcommand{\BC}{\gls{BC}}
-\newcommand{\ABL}{\gls{ABL}}
-\newcommand{\NVP}{\gls{NVP}}
-\newcommand{\USED}{{\color{red}{USED}}}
-\newcommand{\BRAC}{BRAC University}
-\newcommand{\CFD}{\gls{CFD}}
-\newcommand{\ACR}{\gls{ACR}}
-\newcommand{\kEps}{$k-\varepsilon$}
-\newcommand{\kOmega}{$k-\omega$}
-\newcommand{\R}{\gls{R}}
-\newcommand{\COtwo}{CO$_2$}
-\newcommand{\yplus}{\gls{symb:yplus}}
-\newcommand{\yPlus}{\gls{symb:yplus}}
-\newcommand{\SD}{\gls{SD}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CAPTIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\usepackage{caption}
+%\usepackage{subcaption}
+\captionsetup[subfloat]{font=sf,size=footnotesize}
+\usepackage{sidecap} %captions on the side of figures
+
+
+%Captions within pdfpages
+\makeatletter
+\newcommand*{\AM@pagecommandstar}{}
+\define@key{pdfpages}{pagecommand*}{\def\AM@pagecommandstar{#1}}
+\patchcmd{\AM@output}{\begingroup\AM@pagecommand\endgroup}
+{\ifthenelse{\boolean{AM@firstpage}}{\begingroup\AM@pagecommandstar\endgroup}{\begingroup\AM@pagecommand\endgroup}}{}{} % Patch to use new option
+\patchcmd{\AM@split@optionsii}{\equal{pagecommand}{\AM@temp}\or}
+{\equal{pagecommand}{\AM@temp}\or\equal{pagecommand*}{\AM@temp}\or}{}{}
+\makeatother
+%Captions within pdfpages
 
 
 % Kommando zum Ausbügeln des Bugs "\subfloat ohne \caption"
@@ -353,23 +431,70 @@ range-units           = single,
 \makeatother
 
 
+\usepackage[]{hypcap}  %Links to image directly, not to caption
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%MISC PACKAGES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{blindtext}
+\usepackage{enumitem}
+
+%Itemize indention
+\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.22in}
+%\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt} % Change size of itemize environments
+
+\usepackage{listings}
+\usepackage{morewrites}
+%  Multiple Columns
+\usepackage{multicol}
+\usepackage{emptypage} %removes headers and footers on empty pages.
+%% Custom commands
+
+\usepackage{soul}
+
+%% New itemize environment for equations
+
+\newenvironment{equationitem}
+{ \begin{itemize}
+		\setlength{\itemsep}{1pt}
+		\setlength{\parskip}{1pt}
+		\setlength{\parsep}{1pt}}
+	{ \end{itemize}     }  
+
+
+%% Appendix in toc
+
+\usepackage[
+%  toc
+]{appendix}
+
+\usepackage[
+% obeyDraft
+]{todonotes}
+
+%% Counters for figures and tables
+
+\usepackage[figure,table,equation]{totalcount}
+
+
+\usepackage{placeins} %clear floats without new page
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%BIBLIOGRAPHY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%  Tabelle mit kleinerer Schrift  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newenvironment{tabularklein}{%
-	\fontsize{8}{12}\selectfont\tabular
-}{%
-	\endtabular
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[compress,sort,
+numbers
+]{natbib}					% Naturwissenschaftlicher Zitierstil
+%\bibliographystyle{agsm}
+%\bibliographystyle{dinat}
+\bibliographystyle{newapa}
+\renewcommand*{\bibfont}{\sffamily}
 
 
 %Backlinks vom LitVerz zu den Seiten
@@ -395,32 +520,9 @@ range-units           = single,
 }
 
 
-\usepackage{enumitem}
-%\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt} % Change size of itemize environments
-
-
-\usepackage{ltablex} %advanced longtables across multiple pages
-\usepackage{ltxtable}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{floatrow}
-\floatsetup[table]{capposition=top}
-
-\usepackage{blindtext}
-
-\setlist[itemize,1]{leftmargin=\dimexpr 26pt-.22in}
-
-
-\usepackage[compress,sort,
-numbers
-]{natbib}					% Naturwissenschaftlicher Zitierstil
-%\bibliographystyle{agsm}
-%\bibliographystyle{dinat}
-\bibliographystyle{newapa}
-\renewcommand*{\bibfont}{\sffamily}
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%GLOSSARIES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage[
 nomain,
@@ -430,20 +532,11 @@ acronym,
 ]      
 {glossaries-extra}
 
-
-
-
 \glsaccessname{unit}
 \setlength{\glsdescwidth}{15cm}
-
-
-
 \glssetcategoryattribute{acronym}{glossdescfont}{textsf}
 \glssetcategoryattribute{acronym}{glossnamefont}{textsf}
-
 \setabbreviationstyle[acronym]{long-short}
-
-
 
 \glssetnoexpandfield{unit}
 
@@ -467,32 +560,11 @@ acronym,
 
 
 
-
 \usepackage{smartdiagram}
 
-% Colours
-%Primary
-\definecolor{tum_blue}{RGB}{0, 101, 189}
-\definecolor{tum_white}{RGB}{255 , 255 , 255}
-\definecolor{tum_black}{RGB}{0,0,0}
-%Secondary
-\definecolor{tum_blue2}{RGB}{0 , 82 , 147}
-\definecolor{tum_blue3}{RGB}{0 , 51 , 89}
-\definecolor{tum_grey1}{RGB}{088 , 088 , 090}
-\definecolor{tum_grey2}{RGB}{156 , 157 , 159}
-\definecolor{tum_grey3}{RGB}{217 , 218 , 219}
-%Highlights
-\definecolor{tum_beige}{RGB}{218 , 215 , 203}
-\definecolor{tum_orange}{RGB}{227 , 114 , 34}
-\definecolor{tum_green}{RGB}{162 , 173 , 0}
-\definecolor{tum_lightblue}{RGB}{152 , 198 , 234}
-\definecolor{tum_turquoise}{RGB}{100 , 160 , 200}
-\definecolor{darkred}{rgb}{0.7, 0.11, 0.11}
-
-
-
-\usepackage{sidecap} %captions on the side of figures
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CUSTOMIZE TOC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Differrent font in TOC
 \usepackage[titles,subfigure]{tocloft} % Change font of Chapters,  LOF and LOT
@@ -520,12 +592,15 @@ acronym,
 \renewcommand\cfttabpagefont{\sffamily}
 
 
-%% TOC depth
-%
+% TOC depth
 %\setcounter{secnumdepth}{4}
 
 
-%%Code für Headers and Footers
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CUSTOM PAGE LAYOUT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Code für Headers and Footers
 
 \newlength{\marginWidth}
 \setlength\marginWidth{\marginparwidth+\marginparsep}
@@ -796,60 +871,23 @@ acronym,
 \makeatother
 
 
-
-
-
-\usepackage{emptypage} %removes headers and footers on empty pages.
-
-
-% bold math in section
-\makeatletter
-\g@addto@macro\bfseries{\boldmath}
-\makeatother
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%INDEX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \usepackage{makeidx}
 \makeindex
 
+\usepackage[columns=2,minspace=100pt]{idxlayout} %modify layout of index
 
 
 
-%Change font of tables
-\usepackage{etoolbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%HELPER FOR FORMATTING GRAPHICS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-%\AtBeginEnvironment{tabular}{\rmfamily}  
-
-%% Counters for figures and tables
-
-\usepackage[figure,table,equation]{totalcount}
-
-
-
-
-%URL smaller
-\usepackage{relsize}
-\renewcommand*{\UrlFont}{\ttfamily\smaller\relax}
-
-% Code in Latex
-
-\usepackage{listings}
-
-\usepackage{morewrites}
-
-\usepackage{caption}
-
-
-
-%  Multiple Columns
-\usepackage{multicol}
-
-
-% Linen über Graphiken
-% Gitter über Graphik
 \newcommand{\showgrid}[2]{%
 	\newcommand{\gridlen}{20}  % 5 = 1 cm  % 20 = 4 cm
 	\resizebox{#1}{!}{%
@@ -874,49 +912,11 @@ acronym,
 	}
 }
 
-%%%
 
 
-
-
-
-
-
-
-
-%Input something on the left page, use \cleardoublepage to force on right
-\makeatletter
-\newcommand*{\cleartoleftpage}{%
-	\clearpage
-	\if@twoside
-	\ifodd\c@page
-	\hbox{}\newpage
-	\if@twocolumn
-	\hbox{}\newpage
-	\fi
-	\fi
-	\fi
-}
-\makeatother
-
-
-
-
-%Captions within pdfpages
-
-\makeatletter
-\newcommand*{\AM@pagecommandstar}{}
-\define@key{pdfpages}{pagecommand*}{\def\AM@pagecommandstar{#1}}
-\patchcmd{\AM@output}{\begingroup\AM@pagecommand\endgroup}
-{\ifthenelse{\boolean{AM@firstpage}}{\begingroup\AM@pagecommandstar\endgroup}{\begingroup\AM@pagecommand\endgroup}}{}{} % Patch to use new option
-\patchcmd{\AM@split@optionsii}{\equal{pagecommand}{\AM@temp}\or}
-{\equal{pagecommand}{\AM@temp}\or\equal{pagecommand*}{\AM@temp}\or}{}{}
-\makeatother
-
-%Captions within pdfpages
-
-\usepackage[percent]{overpic}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%LATEX OVERLAY GENERATOR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LaTeX Overlay Generator - Annotated Figures v0.0.1
@@ -945,35 +945,32 @@ acronym,
 
 
 
-%% Costom commands
-
-\usepackage{soul}
-
-%% New itemize environment for equations
-
-\newenvironment{equationitem}
-{ \begin{itemize}
-		\setlength{\itemsep}{1pt}
-		\setlength{\parskip}{1pt}
-		\setlength{\parsep}{1pt}}
-	{ \end{itemize}     }  
 
 
-%% Appendix in toc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%CLEAR DOUBLE PAGE PROPERLY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[
-%  toc
-]{appendix}
+%Input something on the left page, use \cleardoublepage to force on right
+\makeatletter
+\newcommand*{\cleartoleftpage}{%
+	\clearpage
+	\if@twoside
+	\ifodd\c@page
+	\hbox{}\newpage
+	\if@twocolumn
+	\hbox{}\newpage
+	\fi
+	\fi
+	\fi
+}
+\makeatother
 
-\usepackage[
-% obeyDraft
-]{todonotes}
+
+\usepackage[percent]{overpic}
 
 
 
-\usepackage{colortbl} %colored tables
-\usepackage{multirow} % merge rown in tables
 
-\usepackage{placeins} %clear floats without new page
 
-\usepackage[columns=2,minspace=100pt]{idxlayout} %modify layout of index
+

@@ -263,5 +263,8 @@ TSWLatexianTemp*
 *.dll
 *.exe
 #*.pdf
+thesis.pdf
+export_equations-crop.pdf
 *.otf
 *.db
+/output-equations/*
