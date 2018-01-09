@@ -40,6 +40,8 @@ $files_to_delete = @(
 	"*.syg",
 	"*.syi",
 	"*.snm",
+	"*.ttt",
+	"*.fff",
     "*.pyg",
     "*.run.xml",
     "*.synctex",
