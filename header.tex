@@ -890,7 +890,7 @@ acronym,
 
 
 %\newcommand{\showgrid}[2]{%
-%	\newcommand{\gridlen}{2}  % 2 = 0.4 cm % 5 = 1 cm  % 20 = 4 cm
+%	\newcommand{\gridlen}{2}  % This determines the size of the squares that later appear: 2 = 0.4 cm % 5 = 1 cm  % 20 = 4 cm
 %	\resizebox{#1}{!}{%
 %		\begin{tikzpicture}[inner sep=0]
 %		% Bild laden
@@ -913,7 +913,7 @@ acronym,
 %	}
 %}
 
-%Example
+%Example:
 %\showgrid{0.8\linewidth}{\includegraphics[clip, trim=31mm 58mm 102mm 31mm]{Test.pdf}}
 
 \usepackage{tikz}
@@ -945,8 +945,10 @@ acronym,
 	}
 }
 
-%Example
+%Example:
 %\showgrid[1]{0.8\linewidth{\includegraphics[clip, trim=20mm 34mm 8mm 16mm]{Test.pdf}}
+%
+%The thick lines have a distance of 10mm, the thin ones of 2mm. This is independent of the image if no width or height argument is passed to the image.
 
 
 
