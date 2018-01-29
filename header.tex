@@ -889,32 +889,70 @@ acronym,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %HELPER FOR FORMATTING GRAPHICS
+%https://www.queryxchange.com/q/24_86356/how-to-trim-clip-crop-graphics-without-trial-and-error/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newcommand{\showgrid}[2]{%
-	\newcommand{\gridlen}{20}  % 5 = 1 cm  % 20 = 4 cm
-	\resizebox{#1}{!}{%
+%\newcommand{\showgrid}[2]{%
+%	\newcommand{\gridlen}{2}  % This determines the size of the squares that later appear: 2 = 0.4 cm % 5 = 1 cm  % 20 = 4 cm
+%	\resizebox{#1}{!}{%
+%		\begin{tikzpicture}[inner sep=0]
+%		% Bild laden
+%		\node[anchor=south west] (image) at (0, 0) {#2};
+%		% Koordinaten fast oben rechts
+%		\path (image.north east) -- ++(-\gridlen, -\gridlen) coordinate (obenrechts);
+%		
+%		\begin{scope}[red]
+%		% Gitter unten links
+%		\draw[xstep=.2, ystep=.2, very thin] (0, 0) grid (\gridlen, \gridlen);
+%		\draw[xstep=1, ystep=1, semithick] (0, 0) grid (\gridlen, \gridlen);
+%		% Gitter oben rechts
+%		\draw[xstep=.2, ystep=.2, shift={(obenrechts)}, very thin] (0, 0) grid (\gridlen, \gridlen);
+%		\draw[xstep=1, ystep=1, shift={(obenrechts)}, semithick] (0, 0) grid (\gridlen, \gridlen);
+%		
+%		% Rahmen
+%		\draw (0, 0) rectangle (image.north east);
+%		\end{scope}
+%		\end{tikzpicture}%
+%	}
+%}
+
+%Example:
+%\showgrid{0.8\linewidth}{\includegraphics[clip, trim=31mm 58mm 102mm 31mm]{Test.pdf}}
+
+\usepackage{tikz}
+
+% Linen über Graphiken
+\newcommand{\showgrid}[3][5]{%
+	\providecommand{\griddepth}{#1}
+	\resizebox{#2}{!}{%
 		\begin{tikzpicture}[inner sep=0]
 		% Bild laden
-		\node[anchor=south west] (image) at (0, 0) {#2};
-		% Koordinaten fast oben rechts
-		\path (image.north east) -- ++(-\gridlen, -\gridlen) coordinate (obenrechts);
-		
+		\node[anchor=south west] (image) at (0, 0) {#3};
+		% Linien einfügen
 		\begin{scope}[red]
-		% Gitter unten links
-		\draw[xstep=.2, ystep=.2, very thin] (0, 0) grid (\gridlen, \gridlen);
-		\draw[xstep=1, ystep=1, semithick] (0, 0) grid (\gridlen, \gridlen);
-		% Gitter oben rechts
-		\draw[xstep=.2, ystep=.2, shift={(obenrechts)}, very thin] (0, 0) grid (\gridlen, \gridlen);
-		\draw[xstep=1, ystep=1, shift={(obenrechts)}, semithick] (0, 0) grid (\gridlen, \gridlen);
-		
-		% Rahmen
-		\draw (0, 0) rectangle (image.north east);
+		% Äußere Schleife für dicke Rechtecke
+		\foreach \iThick in {0, ..., \griddepth} {%
+			\path (image.north east) ++(-\iThick, -\iThick) coordinate(topright);
+			\draw[semithick] (\iThick, \iThick) rectangle (topright);
+			% Zwischen den Linien auffüllen
+			\ifnum\iThick<\griddepth
+			% dünne Rechtecke
+			\foreach \iThin in {1, ..., 4} {%
+				\path (image.north east) ++(-\iThick, -\iThick) ++(-\iThin/5, -\iThin/5) coordinate(topright);
+				\draw[very thin] (\iThick, \iThick) ++(\iThin/5, \iThin/5) rectangle (topright);
+			}
+			\fi
+		}
 		\end{scope}
-		\end{tikzpicture}%
+		\end{tikzpicture}
 	}
 }
+
+%Example:
+%\showgrid[1]{0.8\linewidth{\includegraphics[clip, trim=20mm 34mm 8mm 16mm]{Test.pdf}}
+%
+%The thick lines have a distance of 10mm, the thin ones of 2mm. This is independent of the image if no width or height argument is passed to the image.
 
 
 
