@@ -23,7 +23,6 @@
 \singlespacing
 
 {\pagestyle{plain}
-\enlargethispage{3cm}
 \pdfbookmark[chapter]{\contentsname}{toc}
 \tableofcontents
 \clearpage}
@@ -75,15 +74,14 @@
 \addcontentsline{toc}{chapter}{Bibliography}
 \clearpage}
 
-% Appendix
+%Appendix
 \normalsize
 {\pagestyle{thesisAPPENDIX}
 \phantomsection
 \appendix
 \include{appendix}}
 
-% Index
-\addcontentsline{toc}{chapter}{Index}
+%% Index
 \printindex
 
 \include{declaration}
