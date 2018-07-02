@@ -505,6 +505,30 @@ numbers
 \bibliographystyle{newapa}
 \renewcommand*{\bibfont}{\sffamily}
 
+%% Change Bibliography Header
+
+
+\makeatletter
+\renewcommand\bibsection{%
+	%	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\MakeUppercase{\bibname}}{\sffamily\bibname}}%
+	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\bibname}{\sffamily\bibname}}%
+}%
+\makeatother
+
+
+
+
+%%% APACITE
+
+%\usepackage[%nodoi,
+nosectionbib,numberedbib]{apacite} 
+%\bibliographystyle{apacite}
+%\AtBeginDocument{\urlstyle{APACsame}}
+
+%\renewcommand\bibliographytypesize{\small}
+%\renewcommand\bibliographystyle{apacite}
+
+
 
 %Backlinks vom LitVerz zu den Seiten
 % #1: number of distinct back references
@@ -869,15 +893,6 @@ acronym,
 \let\cleardoublepage\clearemptydoublepage
 
 
-%% Change Bibliography Header
-
-
-\makeatletter
-\renewcommand\bibsection{%
-	%	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\MakeUppercase{\bibname}}{\sffamily\bibname}}%
-	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\bibname}{\sffamily\bibname}}%
-}%
-\makeatother
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
