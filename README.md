@@ -1,5 +1,8 @@
 # ElegantThesisLaTeX
 
+A thesis template based on _scrbook_ and code snippets by [Konrad Mühler](http://www.kfiles.de/latex.php).
+
+
 ## Features
 
 ![Alt text](/screenshots/index.png)

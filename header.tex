@@ -102,7 +102,7 @@ BoldItalicFont=*-bolditalic,
 
 %\setmainfont{MinionPro-Regular.otf}[
 %ExternalLocation=./fonts/,
-%Ligatures=TeX, 
+%Ligatures=TeX,
 %Numbers=OldStyle,
 %SlantedFont = MinionPro-Regular.otf,
 %BoldFont = MinionPro-Bold.otf ]
@@ -250,11 +250,11 @@ afterskip=1sp
 	pdftoolbar=true,        % show Acrobat’s toolbar?
 	pdfmenubar=true,        % show Acrobat’s menu?
 	pdffitwindow=true,     % window fit to page when opened
-	pdfstartview={XYZ null null 1.00},   
-	%         XYZ 	left top zoom   Sets a coordinate and a zoom factor. If any one is null, the source link value is used. null null null will give the same values as the current page.   Fit   Fits the page to the window.    FitH 	top   
+	pdfstartview={XYZ null null 1.00},
+	%         XYZ 	left top zoom   Sets a coordinate and a zoom factor. If any one is null, the source link value is used. null null null will give the same values as the current page.   Fit   Fits the page to the window.    FitH 	top
 	%    Fits the width of the page to the window.    FitV 	left     Fits the height of the page to the window.    FitR 	left bottom right top    Fits the rectangle specified by the four coordinates to the window.    FitB  Fits the page bounding box to the window.
 	%    FitBH 	top  Fits the width of the page bounding box to the window.
-	%    FitBV 	left  Fits the height of the page bounding box to the window. 
+	%    FitBV 	left  Fits the height of the page bounding box to the window.
 	pdftitle = {\titel},    % title
 	pdfauthor = {\autor},     % author
 	pdfsubject = {\art},   % subject of the document
@@ -379,7 +379,7 @@ range-units           = single,
 
 % San serif table font
 
-%\AtBeginEnvironment{tabular}{\rmfamily}  
+%\AtBeginEnvironment{tabular}{\rmfamily}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TABLE WITH SMALL FONT
@@ -452,7 +452,7 @@ range-units           = single,
 		\setlength{\itemsep}{1pt}
 		\setlength{\parskip}{1pt}
 		\setlength{\parsep}{1pt}}
-	{ \end{itemize}     }  
+	{ \end{itemize}     }
 
 
 %% Appendix in toc
@@ -486,6 +486,30 @@ numbers
 \bibliographystyle{newapa}
 \renewcommand*{\bibfont}{\sffamily}
 
+%% Change Bibliography Header
+
+
+\makeatletter
+\renewcommand\bibsection{%
+	%	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\MakeUppercase{\bibname}}{\sffamily\bibname}}%
+	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\bibname}{\sffamily\bibname}}%
+}%
+\makeatother
+
+
+
+
+%%% APACITE
+
+%\usepackage[%nodoi,
+nosectionbib,numberedbib]{apacite}
+%\bibliographystyle{apacite}
+%\AtBeginDocument{\urlstyle{APACsame}}
+
+%\renewcommand\bibliographytypesize{\small}
+%\renewcommand\bibliographystyle{apacite}
+
+
 
 %Backlinks vom LitVerz zu den Seiten
 % #1: number of distinct back references
@@ -516,10 +540,10 @@ numbers
 
 \usepackage[
 nomain,
-nonumberlist, 
-acronym,      
+nonumberlist,
+acronym,
 %section
-]      
+]
 {glossaries-extra}
 
 \glsaccessname{unit}
@@ -590,7 +614,7 @@ acronym,
 %CUSTOM PAGE LAYOUT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Code für Headers and Footers
+%Code for Headers and Footers adapted from http://www.kfiles.de
 
 \newlength{\marginWidth}
 \setlength\marginWidth{\marginparwidth+\marginparsep}
@@ -657,7 +681,7 @@ acronym,
 					\hfill
 		}}}\hss
 	}
-	
+
 	\renewcommand{\@evenhead}{
 		\hspace{-\marginWidth}
 		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
@@ -669,14 +693,14 @@ acronym,
 					\hspace{7pt}
 					\strut
 		}}}\hss
-		
+
 		\hbox to\textwidth{\vbox{\hbox to\textwidth{
 					\strut %unsichtbares Zeichen
 					\truncate{.9\textwidth}{\leftmark}
 					\hfill
 		}}}\hss
 	}
-	
+
 	\oddfootSTANDARD
 	\evenfootSTANDARD
 }
@@ -709,7 +733,7 @@ acronym,
 					\hfill
 		}}}\hss
 	}
-	
+
 	\renewcommand{\@evenhead}{
 		\hspace{-\marginWidth}
 		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
@@ -721,14 +745,14 @@ acronym,
 					\hspace{7pt}
 					\strut
 		}}}\hss
-		
+
 		\hbox to\textwidth{\vbox{\hbox to\textwidth{
 					\strut %unsichtbares Zeichen
 					\truncate{.9\textwidth}{\leftmark}
 					\hfill
 		}}}\hss
 	}
-	
+
 	\oddfootSTANDARD
 	\evenfootSTANDARD
 }
@@ -753,7 +777,7 @@ acronym,
 					\hfill
 		}}}\hss
 	}
-	
+
 	\renewcommand{\@evenhead}{
 		\hspace{-\marginWidth}
 		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
@@ -765,14 +789,14 @@ acronym,
 					\hspace{7pt}
 					\strut
 		}}}\hss
-		
+
 		\hbox to\textwidth{\vbox{\hbox to\textwidth{
 					\strut %unsichtbares Zeichen
 					\truncate{.9\textwidth}{\leftmark}
 					\hfill
 		}}}\hss
 	}
-	
+
 	\oddfootSTANDARD
 	\evenfootSTANDARD
 }
@@ -797,7 +821,7 @@ acronym,
 					\hfill
 		}}}\hss
 	}
-	
+
 	\renewcommand{\@evenhead}{
 		\hspace{-\marginWidth}
 		\hbox to\marginWidth{\vbox{\hbox to\marginWidth{
@@ -809,15 +833,15 @@ acronym,
 					\hspace{7pt}
 					\strut
 		}}}\hss
-		
+
 		\hbox to\textwidth{\vbox{\hbox to\textwidth{
 					\strut %unsichtbares Zeichen
-					%	\truncate{.9\textwidth}{\textsf{\MakeUppercase{\leftmark}}}% Zuständig für Variable hinter | 
-					\truncate{.9\textwidth}{\textsf{\leftmark}}% Zuständig für Variable hinter | 
+					%	\truncate{.9\textwidth}{\textsf{\MakeUppercase{\leftmark}}}% Zuständig für Variable hinter |
+					\truncate{.9\textwidth}{\textsf{\leftmark}}% Zuständig für Variable hinter |
 					\hfill
 		}}}\hss
 	}
-	
+
 	\oddfootSTANDARD
 	\evenfootSTANDARD
 }
@@ -850,15 +874,6 @@ acronym,
 \let\cleardoublepage\clearemptydoublepage
 
 
-%% Change Bibliography Header
-
-
-\makeatletter
-\renewcommand\bibsection{%
-	%	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\MakeUppercase{\bibname}}{\sffamily\bibname}}%
-	\chapter*{{\sffamily\huge\bibname}\@mkboth{\sffamily\bibname}{\sffamily\bibname}}%
-}%
-\makeatother
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -885,7 +900,7 @@ acronym,
 %		\node[anchor=south west] (image) at (0, 0) {#2};
 %		% Koordinaten fast oben rechts
 %		\path (image.north east) -- ++(-\gridlen, -\gridlen) coordinate (obenrechts);
-%		
+%
 %		\begin{scope}[red]
 %		% Gitter unten links
 %		\draw[xstep=.2, ystep=.2, very thin] (0, 0) grid (\gridlen, \gridlen);
@@ -893,7 +908,7 @@ acronym,
 %		% Gitter oben rechts
 %		\draw[xstep=.2, ystep=.2, shift={(obenrechts)}, very thin] (0, 0) grid (\gridlen, \gridlen);
 %		\draw[xstep=1, ystep=1, shift={(obenrechts)}, semithick] (0, 0) grid (\gridlen, \gridlen);
-%		
+%
 %		% Rahmen
 %		\draw (0, 0) rectangle (image.north east);
 %		\end{scope}
@@ -967,7 +982,7 @@ acronym,
 
 \newenvironment {annotatedFigure}[1]{\centering\begin{tikzpicture}
 	\node[anchor=south west,inner sep=0] (image) at (0,0) { #1};\begin{scope}[x={(image.south east)},y={(image.north west)}]}{\end{scope}\end{tikzpicture}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -994,9 +1009,3 @@ acronym,
 
 
 \usepackage[percent]{overpic}
-
-
-
-
-
-
