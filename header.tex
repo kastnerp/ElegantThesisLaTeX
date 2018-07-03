@@ -30,26 +30,7 @@ numbers=noenddot,							% Keine Punkte nach Nummerierung
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TITLEPAGE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand{\titel}{Customizing OpenFOAM to assess\\ wind-induced natural ventilation\\ potential of classrooms\newline {\Large A case study for BRAC University}}
-\newcommand{\untertitel}{und hier kommt der Untertitel}
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
-\newcommand{\art}{Master's Thesis}
-\newcommand{\fachgebiet}{}
-\newcommand{\autor}{Patrick Kastner}
-\newcommand{\wohnort}{81369 München}
-\newcommand{\univname}{Technische Universität München}
-\newcommand{\studienbereich}{Energy-efficient and Sustainable Building}
-\newcommand{\groupname}{}
-\newcommand{\deptname}{}
-\newcommand{\degreename}{Master of Science (MSc)}
-\newcommand{\matrikelnr}{03650879}
-\newcommand{\erstgutachter}{Prof. Dipl.-Ing. Thomas Auer}
-\newcommand{\zweitgutachter}{Dr. rer. nat. Wolfgang Kessling}
-\newcommand{\drittgutachter}{Markus Krauß, M.Eng.}
-\newcommand{\viertgutachter}{Dipl.-Ing. Christian Oberdorf}
-\newcommand{\ort}{München}
-
+\input{author.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %CUSTOM COMMANDS
@@ -274,12 +255,12 @@ afterskip=1sp
 	%    Fits the width of the page to the window.    FitV 	left     Fits the height of the page to the window.    FitR 	left bottom right top    Fits the rectangle specified by the four coordinates to the window.    FitB  Fits the page bounding box to the window.
 	%    FitBH 	top  Fits the width of the page bounding box to the window.
 	%    FitBV 	left  Fits the height of the page bounding box to the window. 
-	pdftitle = {Customizing OpenFOAM to assess wind-induced natural ventilation potential of classrooms: A case study for BRAC University},    % title
+	pdftitle = {\titel},    % title
 	pdfauthor = {\autor},     % author
-	pdfsubject = {Master's Thesis},   % subject of the document
+	pdfsubject = {\art},   % subject of the document
 	pdfcreator={\autor},   % creator of the document
 	pdfproducer={\autor}, % producer of the document
-	pdfkeywords= {natural ventilation} {OpenFOAM} {building simulation} {CFD}, % list of keywords
+	pdfkeywords= {} {} {} {}, % list of keywords
 	pdfnewwindow=true,      % links in new window
 	pdfpagelayout={TwoColumnRight},
 	colorlinks=true,       % false: boxed links; true: colored links
