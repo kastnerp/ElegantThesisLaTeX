@@ -980,8 +980,12 @@ acronym,
 \newcommand*\annotatedFigureBoxGray[4]{\annotatedFigureBoxCustomBlack{#1}{#2}{#3}{#4}{gray}{white}{gray}{black}}
 \newcommand*\annotatedFigureTextGray[4]{\node[draw=none, anchor=south west, text=#2, inner sep=0, text width=#3\linewidth,font=\sffamily] at (#1){#4};}
 
-\newenvironment {annotatedFigure}[1]{\centering\begin{tikzpicture}
-	\node[anchor=south west,inner sep=0] (image) at (0,0) { #1};\begin{scope}[x={(image.south east)},y={(image.north west)}]}{\end{scope}\end{tikzpicture}}
+%\newenvironment {annotatedFigure}[1]{
+%	\centering
+%	\begin{tikzpicture}
+%	\node[anchor=south west,inner sep=0] (image) at (0,0) { #1};\begin{scope}[x={(image.south east)},y={(image.north west)}]{\end{scope}}
+%	\end{tikzpicture}
+%}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

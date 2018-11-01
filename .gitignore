@@ -268,3 +268,6 @@ export_equations-crop.pdf
 *.otf
 *.db
 /output-equations/*
+
+# docx coversion
+*.docx

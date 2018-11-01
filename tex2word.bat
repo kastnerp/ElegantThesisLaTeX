@@ -1,0 +1,1 @@
+pandoc thesis.tex --bibliography=literature/literature.bib -o thesis.docx
