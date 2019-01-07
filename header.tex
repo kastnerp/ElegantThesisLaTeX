@@ -482,8 +482,8 @@ range-units           = single,
 numbers
 ]{natbib}					% Naturwissenschaftlicher Zitierstil
 %\bibliographystyle{agsm}
-%\bibliographystyle{dinat}
-\bibliographystyle{newapa}
+\bibliographystyle{dinat}
+%\bibliographystyle{newapa}
 \renewcommand*{\bibfont}{\sffamily}
 
 %% Change Bibliography Header
@@ -959,6 +959,10 @@ acronym,
 %LATEX OVERLAY GENERATOR
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%LATEX OVERLAY GENERATOR
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % LaTeX Overlay Generator - Annotated Figures v0.0.1
 % Created with http://ff.cx/latex-overlay-generator/
@@ -980,13 +984,9 @@ acronym,
 \newcommand*\annotatedFigureBoxGray[4]{\annotatedFigureBoxCustomBlack{#1}{#2}{#3}{#4}{gray}{white}{gray}{black}}
 \newcommand*\annotatedFigureTextGray[4]{\node[draw=none, anchor=south west, text=#2, inner sep=0, text width=#3\linewidth,font=\sffamily] at (#1){#4};}
 
-%\newenvironment {annotatedFigure}[1]{
-%	\centering
-%	\begin{tikzpicture}
-%	\node[anchor=south west,inner sep=0] (image) at (0,0) { #1};\begin{scope}[x={(image.south east)},y={(image.north west)}]{\end{scope}}
-%	\end{tikzpicture}
-%}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment {annotatedFigure}[1]{\centering\begin{tikzpicture}
+	\node[anchor=south west,inner sep=0] (image) at (0,0) { #1};\begin{scope}[x={(image.south east)},y={(image.north west)}]}{\end{scope}\end{tikzpicture}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 
 
@@ -1013,3 +1013,7 @@ acronym,
 
 
 \usepackage[percent]{overpic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fix warnings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{silence}\WarningFilter{fixltx2e}{}

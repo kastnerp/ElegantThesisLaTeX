@@ -13,9 +13,6 @@ Param(
 
 $files_to_delete = @(
     "*.aux",
-	"*.acn",
-	"*.acr",
-	"*.alg",
     "*.bbl",
     "*.bcf",
     "*.blg",
@@ -23,25 +20,14 @@ $files_to_delete = @(
     "*.idx",
     "*.ilg",
     "*.ind",
-	"*.ist",
-	"*.glo",
-	"*.glg",
     "*.lof",
     "*.log",
     "*.lol",
     "*.lot",
     "*.lpr",
-	"*.nav",
     "*.nlo",
     "*.nls",
     "*.out",
-	"*.gls",
-	"*.slg",
-	"*.syg",
-	"*.syi",
-	"*.snm",
-	"*.ttt",
-	"*.fff",
     "*.pyg",
     "*.run.xml",
     "*.synctex",
@@ -50,10 +36,8 @@ $files_to_delete = @(
     "*.toc"
 	"*.bbl.bak"
 	"*.lof.bak"
-	"*.mw"
-	"*.tex.bak"
-	"*.bib.bak"
-	"*.synctex(busy)"
+	"*.fls"
+	"*.fdb_latexmk"
 )
 
 $n_files_removed = 0
