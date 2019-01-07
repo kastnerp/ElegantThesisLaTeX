@@ -45,53 +45,53 @@
 \pagenumbering{arabic}
 
 % Chapters
-%\include{1_chapter}
-%\glsresetall
-%\include{2_chapter}
-%\glsresetall
-%\include{3_chapter}
-%\glsresetall
-%\include{4_chapter}
+\include{1_chapter}
 \glsresetall
-%\include{5_chapter}
-%\glsresetall
+\include{2_chapter}
+\glsresetall
+\include{3_chapter}
+\glsresetall
+\include{4_chapter}
+\glsresetall
+\include{5_chapter}
+\glsresetall
 \include{6_chapter}
-%\glsresetall
-%\include{7_chapter}
+\glsresetall
+\include{7_chapter}
 
-%\small
-%{\pagestyle{thesisLISTS}
-%\listoffigures
-%\listoftables
-%%\listoflistings
-%\clearpage}
-%
-%
-%\clearpage
-%{\pagestyle{thesisINTRO}
-%\small
-%\bibliography{literature/literature}
-%\addcontentsline{toc}{chapter}{Bibliography}
-%\clearpage}
-%
-%%Appendix
-%\normalsize
-%{\pagestyle{thesisAPPENDIX}
-%\phantomsection
-%\appendix
-%%\include{appendix}
-%}
-%
-%%% Index
-%\printindex
-%
-%\include{declaration}
-%
-%% Cover on correct page
-%\clearpage
-%\thispagestyle{empty}
-%\vspace*{\fill}
-%\vspace*{\fill}
-%\clearpage
-%\includepdf[pages=1,trim=10cm 1.3cm 28cm 1.2cm,,fitpaper=false, pagecommand*={\thispagestyle{empty}}]{cover/cover.pdf}
+\small
+{\pagestyle{thesisLISTS}
+\listoffigures
+\listoftables
+%\listoflistings
+\clearpage}
+
+
+\clearpage
+{\pagestyle{thesisINTRO}
+\small
+\bibliography{literature/literature}
+\addcontentsline{toc}{chapter}{Bibliography}
+\clearpage}
+
+%Appendix
+\normalsize
+{\pagestyle{thesisAPPENDIX}
+\phantomsection
+\appendix
+%\include{appendix}
+}
+
+%% Index
+\printindex
+
+\include{declaration}
+
+% Cover on correct page
+\clearpage
+\thispagestyle{empty}
+\vspace*{\fill}
+\vspace*{\fill}
+\clearpage
+\includepdf[pages=1,trim=10cm 1.3cm 28cm 1.2cm,,fitpaper=false, pagecommand*={\thispagestyle{empty}}]{cover/cover.pdf}
 \end{document}
