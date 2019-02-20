@@ -34,10 +34,15 @@ $files_to_delete = @(
     "*.synctex.gz"
     "*.tdo",
     "*.toc"
-	"*.bbl.bak"
-	"*.lof.bak"
-	"*.fls"
-	"*.fdb_latexmk"
+    "*.bbl.bak"
+    "*.lof.bak"
+    "*.fls"
+    "*.fdb_latexmk"
+    "*.ist"
+    "*.glo"
+    "*.mw"
+    "*.acn"
+    "*.syg"
 )
 
 $n_files_removed = 0
