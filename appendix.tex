@@ -117,12 +117,33 @@ For the full description of the study, the reader is referred to \fref{sec:valid
 
 
 
+
 \clearpage
 \chapter{Tables}
 \label{app:tables}
 \renewcommand{\arraystretch}{1.2} %More linespacing for tables
 
+\clearpage
 
+	\begin{table}[h]
+	\caption{Table with footnotes on the same page.}
+	\begin{center}
+		\begin{threeparttable}
+			\begin{tabular}{c c c c}
+				\toprule
+				\textbf{1st Column} & \textbf{2nd Colimn} & \textbf{3rd Colimn} & \textbf{4th Colimn} \\ \midrule
+				QWERTY\tnote{1}   &                     &                     &  \\
+				ASDFGH\tnote{2}   &                     &                     &  \\ \bottomrule
+			\end{tabular}
+			\begin{tablenotes}
+				\item[1] qwerty; \item[2] asdfgh
+			\end{tablenotes}
+		\end{threeparttable}
+	\end{center}
+	\label{table:simDisimCoefNewDef}
+\end{table}
+
+\clearpage
 
 
 \input{tables/aerodynamic_roughness_length.tex}
