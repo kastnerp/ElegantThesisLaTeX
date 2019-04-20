@@ -43,6 +43,10 @@ $files_to_delete = @(
     "*.mw"
     "*.acn"
     "*.syg"
+	"*.acr"
+	"*.alg"
+	"*.slg"
+	"*.syi"
 )
 
 $n_files_removed = 0
