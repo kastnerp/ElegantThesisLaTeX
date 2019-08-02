@@ -484,16 +484,21 @@ range-units           = single,
 %BIBLIOGRAPHY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Numbered Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \usepackage[compress,sort,
 numbers
-]{natbib}					% Naturwissenschaftlicher Zitierstil
+]{natbib}
 %\bibliographystyle{agsm}
 \bibliographystyle{dinat}
 %\bibliographystyle{newapa}
 \renewcommand*{\bibfont}{\sffamily}
 
-%% Change Bibliography Header
-
+% Change Bibliography Header
 
 \makeatletter
 \renewcommand\bibsection{%
@@ -505,19 +510,27 @@ numbers
 
 
 
-%%% APACITE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%APA Style
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\renewcommand{\refname}{\centering REFERENCES}
+%
 %\usepackage[%nodoi,
-%nosectionbib,numberedbib]{apacite}
+%nosectionbib,
+%%numberedbib
+%]{apacite}
 %\bibliographystyle{apacite}
 %\AtBeginDocument{\urlstyle{APACsame}}
-
+%
 %\renewcommand\bibliographytypesize{\small}
-%\renewcommand\bibliographystyle{apacite}
 
 
 
-%Backlinks vom LitVerz zu den Seiten
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Backlinks to citations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % #1: number of distinct back references
 % #2: backref list with distinct entries
 % #3: number of back references including duplicates
