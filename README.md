@@ -12,7 +12,7 @@ Switch can be made in the file `header.tex`.
 
 2. Recompile
 
-*Note: With APA, you cannot use the `\citep{}` command, hence you will have to change all `\citep{}` to `\cite{}`*
+*Note: With APA, you cannot use the `\citep{}` command, hence you will have to change all `\citep{}` to `\cite{}`*.
 
 
 
