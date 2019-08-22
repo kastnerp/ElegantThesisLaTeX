@@ -1,4 +1,11 @@
 del *crop* /a /s
-for %%d in (*.pdf) do pdfcrop %%d
-for %%i in (*.jpg) do magick %%i -trim %%~ni-crop%%~xi
-for %%i in (*.png) do magick %%i -trim %%~ni-crop%%~xi
+
+for /r %%a in (.) do (
+  pushd %%a
+  (
+    for %%i in (*.pdf) do pdfcrop %%i
+	for %%j in (*.jpg) do magick %%j -trim %%~nj-crop%%~xj
+	for %%k in (*.png) do magick %%k -trim %%~nk-crop%%~xk 
+	)
+  popd 
+  )
