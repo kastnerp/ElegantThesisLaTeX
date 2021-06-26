@@ -143,7 +143,7 @@ BoldItalicFont=*-bolditalic,
 afterskip=1sp
 ]{paragraph,subparagraph}
 \usepackage{etex}
-\reserveinserts{20}
+%\reserveinserts{20}
 \usepackage[english]{babel}				% Schriftsatzerweiterung
 \usepackage{alphabeta} % Use greek letters as text and in PDF bookmarks
 \usepackage{bm}								% Enable bold math symbols
@@ -155,7 +155,7 @@ afterskip=1sp
 \makeatother
 
 \usepackage{wrapfig}					% Von Text umflossene Grafiken
-\usepackage{subfig}
+\usepackage{subcaption}
 
 
 
@@ -293,7 +293,6 @@ afterskip=1sp
 \usepackage{lscape}						% Landscpae Seiten
 \usepackage{pdflscape}					% Landscape Seiten drehen
 \usepackage{gensymb}					% Celsius anzeigen
-\usepackage{subfig}					% mehrere Bilder pro Zeile
 \usepackage{pdfpages}
 \usepackage[footnote]{acronym}			% Abkürzungsverzeichnis
 \usepackage{mathtools} % braces in math environment
@@ -404,7 +403,6 @@ range-units           = single,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{caption}
-%\usepackage{subcaption}
 \captionsetup[subfloat]{font=sf,size=footnotesize}
 \usepackage{sidecap} %captions on the side of figures
 
@@ -600,7 +598,7 @@ acronym,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Differrent font in TOC
-\usepackage[titles,subfigure]{tocloft} % Change font of Chapters,  LOF and LOT
+\usepackage[titles]{tocloft} % Change font of Chapters,  LOF and LOT
 
 \setlength{\cftbeforechapskip}{2ex}
 \setlength{\cftbeforesecskip}{0.8ex}
