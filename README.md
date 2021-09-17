@@ -1,3 +1,5 @@
+[![Build LaTeX document](https://github.com/kastnerp/ElegantThesisLaTeX/actions/workflows/main.yml/badge.svg)](https://github.com/kastnerp/ElegantThesisLaTeX/actions/workflows/main.yml)
+
 ElegantThesisLaTeX
 ==================
 
