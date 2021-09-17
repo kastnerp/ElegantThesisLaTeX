@@ -1,1 +1,1 @@
-docker run --rm -it -v miktex:/miktex/.miktex -v %cd%:/miktex/work miktex/miktex bash -c "lualatex thesis.tex; makeglossaries thesis;bibtex8 -W  thesis; makeindex thesis; lualatex thesis.tex;call equations.bat"
+docker run --rm -it -v %cd%:/workdir texlive/texlive bash -c "cd workdir; ./compile.sh"
