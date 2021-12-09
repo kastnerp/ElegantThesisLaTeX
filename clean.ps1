@@ -1,4 +1,4 @@
-﻿# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # Script: Clean-Temporary-Files.ps1
 # Author: Jonas Gröger <jonas.groeger@gmail.com>
 # Date: 12.04.2014
@@ -12,6 +12,7 @@ Param(
 )
 
 $files_to_delete = @(
+	"*-blx.bib",
     "*.aux",
     "*.bbl",
     "*.bcf",
@@ -43,11 +44,11 @@ $files_to_delete = @(
     "*.mw"
     "*.acn"
     "*.syg"
-    "*.acr"
-    "*.alg"
-    "*.slg"
-    "*.syi"
-    "*.txss"
+	"*.acr"
+	"*.alg"
+	"*.slg"
+	"*.syi"
+	"*.txss"
 )
 
 $n_files_removed = 0
