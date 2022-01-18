@@ -1,1 +1,1 @@
-docker run --rm -it -v %cd%:/workdir texlive/texlive bash -c "cd workdir; ./compile.sh"
+docker run --rm -it --volume=%cd%/:/workdir texlive/texlive bash -c "cd workdir; ./compile.sh"
