@@ -12,11 +12,12 @@ Param(
 )
 
 $files_to_delete = @(
-	"*-blx.bib",
     "*.aux",
+    "*.bak",
     "*.bbl",
     "*.bcf",
     "*.blg",
+    "*-blx.bib",
     "*.brf",
     "*.idx",
     "*.ilg",
@@ -34,21 +35,22 @@ $files_to_delete = @(
     "*.synctex",
     "*.synctex.gz"
     "*.tdo",
-    "*.toc"
-    "*.bbl.bak"
-    "*.lof.bak"
-    "*.fls"
-    "*.fdb_latexmk"
-    "*.ist"
-    "*.glo"
-    "*.mw"
-    "*.acn"
-    "*.syg"
-	"*.acr"
-	"*.alg"
-	"*.slg"
-	"*.syi"
-	"*.txss"
+    "*.toc",
+    "*.bbl.bak",
+    "*.lof.bak",
+    "*.fls",
+    "*.fdb_latexmk",
+    "*.ist",
+    "*.glo",
+    "*.mw",
+    "*.acn",
+    "*.syg",
+    "*.acr",
+    "*.alg",
+    "*.slg",
+    "*.syi",
+    "*.txss",
+    "*.uhy"
 )
 
 $n_files_removed = 0
