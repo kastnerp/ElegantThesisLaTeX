@@ -17,7 +17,6 @@ $files_to_delete = @(
     "*.bbl",
     "*.bcf",
     "*.blg",
-    "*-blx.bib",
     "*.brf",
     "*.idx",
     "*.ilg",
@@ -47,9 +46,11 @@ $files_to_delete = @(
     "*.syg",
     "*.acr",
     "*.alg",
+    "*.spl",
     "*.slg",
     "*.syi",
     "*.txss",
+    "*.sav.tmp",
     "*.uhy"
 )
 
