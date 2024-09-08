@@ -12,8 +12,8 @@ Param(
 )
 
 $files_to_delete = @(
+    "*-blx.bib",
     "*.aux",
-    "*.bak",
     "*.bbl",
     "*.bcf",
     "*.blg",
@@ -46,10 +46,15 @@ $files_to_delete = @(
     "*.syg",
     "*.acr",
     "*.alg",
-    "*.spl",
+    "*.slg",
+    "*.syi",
+    "*.acr",
+    "*.alg",
     "*.slg",
     "*.syi",
     "*.txss",
+    "*.bak",
+    "*.log",
     "*.sav.tmp",
     "*.uhy"
 )
