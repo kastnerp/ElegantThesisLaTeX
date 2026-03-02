@@ -54,7 +54,7 @@ numbers=noenddot,							% Keine Punkte nach Nummerierung
 \newcommand{\R}{\gls{R}}
 \newcommand{\COtwo}{CO$_2$}
 \newcommand{\yplus}{\gls{symb:yplus}}
-\newcommand{\yPlus}{\gls{symb:yplus}}
+\newcommand{\yPlus}{\yplus}
 \newcommand{\SD}{\gls{SD}}
 
 
@@ -65,28 +65,7 @@ numbers=noenddot,							% Keine Punkte nach Nummerierung
 \usepackage{textcomp}
 \usepackage[]{euler}
 \usepackage{fontspec}
-\usepackage{luatextra}
-\usepackage{csquotes}
-
-%FONT Combination 1
-
-\setmainfont{Erewhon}[
-Extension=.otf,
-UprightFont=*-Regular,
-ItalicFont=*-Italic,
-BoldFont=*-Bold,
-BoldItalicFont=*-BoldItalic,
-SlantedFont=*-RegularSlanted,
-BoldSlantedFont=*-BoldSlanted,
-]
-\setsansfont{texgyreheros}[
-Scale=MatchLowercase,% or MatchUppercase
-Extension=.otf,
-UprightFont=*-regular,
-ItalicFont=*-italic,
-BoldFont=*-bold,
-BoldItalicFont=*-bolditalic,
-]
+\defaultfontfeatures{Ligatures=TeX}
 
 %FONT Combination 2
 \setmainfont{XCharter-Roman}
@@ -142,11 +121,8 @@ BoldItalicFont=*-bolditalic,
 \RedeclareSectionCommands[ %Linebreak after paragraphs
 afterskip=1sp
 ]{paragraph,subparagraph}
-\usepackage{etex}
 %\reserveinserts{20}
 \usepackage[english]{babel}				% Schriftsatzerweiterung
-\usepackage{alphabeta} % Use greek letters as text and in PDF bookmarks
-\usepackage{bm}								% Enable bold math symbols
 \usepackage{microtype}%
 %\usepackage{geometry}
 
@@ -154,20 +130,16 @@ afterskip=1sp
 \g@addto@macro\bfseries{\boldmath} % bold math in section heading
 \makeatother
 
-\usepackage{wrapfig}					% Von Text umflossene Grafiken
 \usepackage{subcaption}
 
 
 
 \usepackage{ellipsis} % Weißraum bei Ellipsen optimal
-\usepackage[NewCommands]{ragged2e} % Flattersatz mit (!) Silbentrennung
 \clubpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
 \widowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
 \displaywidowpenalty = 10000 % Schusterjungen und Hurenkinder vermeiden
 
 
-\usepackage{marvosym}						% Euro-Symbol verfügbar machen
-\usepackage[official,right]{eurosym}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -194,7 +166,6 @@ afterskip=1sp
 \usepackage[dvipsnames]{xcolor}
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 \definecolor{royalblue}{rgb}{0.0, 0.14, 0.4}
-\definecolor{tumblue}{RGB}{15 , 27 , 95}
 \definecolor{tumblue}{RGB}{15 , 27 , 95}
 \definecolor{lightblue}{RGB}{220 , 230 , 241}
 \definecolor{tum_blue}{RGB}{0, 101, 189}
@@ -243,6 +214,11 @@ afterskip=1sp
 %\usepackage[hang, flushmargin]{footmisc}
 \usepackage[breaklinks, hidelinks,hyperfootnotes=false, unicode]{hyperref} %Clickable hyperlinks everywhere
 \def\UrlBigBreaks{\do\/\do-\do:}
+\pdfstringdefDisableCommands{%
+	\def\\{ }%
+	\def\newline{ }%
+	\def\Large{}%
+}
 \hypersetup{
 	draft=false,
 	%    bookmarks=true,
@@ -285,23 +261,15 @@ afterskip=1sp
 
 
 \usepackage{bookmark}
-\usepackage{xspace}				% Fixes usage of spaces
 %\usepackage{layout}						% Layout überprüfen
 \usepackage{setspace} 	% Linespacing: singelspacing, onehalfspacing, doublespacing
 \usepackage[english, plain]{fancyref} %Cross-referencing
-\usepackage{upgreek}
-\usepackage{lscape}						% Landscpae Seiten
-\usepackage{pdflscape}					% Landscape Seiten drehen
-\usepackage{gensymb}					% Celsius anzeigen
 \usepackage{pdfpages}
-\usepackage[footnote]{acronym}			% Abkürzungsverzeichnis
 \usepackage{mathtools} % braces in math environment
-\usepackage{epigraph}
 %\usepackage{pgfplots}
 %\usepackage{pgfkeys}
 \usepackage{calc}
 \usepackage{tikz}
-\usepackage{setspace}
 %\usepackage[version=3]{mhchem}			%chemische Formeln
 \usepackage[%format=hang
 ,labelfont=bf,
@@ -363,7 +331,6 @@ range-units           = single,
 %table-space-text-pre    = (,
 %table-space-text-post   = ),
 
-\usepackage{textpos}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TABLES
@@ -371,15 +338,11 @@ range-units           = single,
 
 \usepackage{booktabs} % Lines betwenn tables
 \usepackage{longtable}					% Tables that are longer than one page
-\usepackage{tablefootnote}				% Footnote in tables
-\usepackage{tabularx, longtable, array} % Tabellen
-\usepackage{ltablex} %advanced longtables across multiple pages
-\usepackage{ltxtable}
+\usepackage{array}
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
 \usepackage{etoolbox} %Change font of tables
-\usepackage{multirow} % merge rown in tables
-\usepackage{color, colortbl}	%You will need the following two packages, the first to define new colors and the latter to actually color the table
+\usepackage{colortbl}
 \usepackage[para,online,flushleft]{threeparttable}	 % Footnotes in tables
 
 % San serif table font
@@ -402,9 +365,7 @@ range-units           = single,
 %CAPTIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage{caption}
 \captionsetup[subfloat]{font=sf,size=footnotesize}
-\usepackage{sidecap} %captions on the side of figures
 
 
 %Captions within pdfpages
@@ -440,14 +401,10 @@ range-units           = single,
 \setlist[itemize,1]{leftmargin=\dimexpr 26pt-.22in}
 %\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt} % Change size of itemize environments
 
-\usepackage{listings}
-\usepackage{morewrites}
 %  Multiple Columns
-\usepackage{multicol}
 \usepackage{emptypage} %removes headers and footers on empty pages.
 %% Custom commands
 
-\usepackage{soul}
 
 %% New itemize environment for equations
 
@@ -464,10 +421,6 @@ range-units           = single,
 \usepackage[
 %  toc
 ]{appendix}
-
-\usepackage[
-% obeyDraft
-]{todonotes}
 
 %% Counters for figures and tables
 
@@ -591,7 +544,6 @@ acronym,
 
 
 
-\usepackage{smartdiagram}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %CUSTOMIZE TOC
@@ -936,7 +888,6 @@ acronym,
 %Example:
 %\showgrid{0.8\linewidth}{\includegraphics[clip, trim=31mm 58mm 102mm 31mm]{Test.pdf}}
 
-\usepackage{tikz}
 
 % Linen über Graphiken
 \newcommand{\showgrid}[3][5]{%
@@ -1029,8 +980,6 @@ acronym,
 \makeatother
 
 
-\usepackage[percent]{overpic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Fix warnings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{silence}\WarningFilter{fixltx2e}{}
