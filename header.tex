@@ -67,16 +67,23 @@ numbers=noenddot,							% Keine Punkte nach Nummerierung
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
 
-%FONT Combination 2
-\setmainfont{XCharter-Roman}
-\setsansfont{texgyreheros}[
-Scale=MatchLowercase,% or MatchUppercase
-Extension=.otf,
-UprightFont=*-regular,
-ItalicFont=*-italic,
-BoldFont=*-bold,
-BoldItalicFont=*-bolditalic,
-]
+% Font selection (preferred vs fallback)
+\ifUseFallbackFonts
+	\setmainfont{Latin Modern Roman}
+	\setsansfont{Latin Modern Sans}[
+	Scale=MatchLowercase,% or MatchUppercase
+	]
+\else
+	\setmainfont{XCharter-Roman}
+	\setsansfont{texgyreheros}[
+	Scale=MatchLowercase,% or MatchUppercase
+	Extension=.otf,
+	UprightFont=*-regular,
+	ItalicFont=*-italic,
+	BoldFont=*-bold,
+	BoldItalicFont=*-bolditalic,
+	]
+\fi
 
 %FONT Combination 3 (Adobe Fonts)
 
